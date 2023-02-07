@@ -22,15 +22,6 @@ const Search = () => {
           <Text style={styles.subtitle}>Brower all</Text>
         </View>
         <SearchCard />
-        {/* <SearchCard/>
-        <SearchCard/>
-        <SearchCard/>
-        <SearchCard/>
-        <SearchCard/>
-        <SearchCard/>
-        <SearchCard/>
-        <SearchCard/>
-        <SearchCard/> */}
       </ScrollView>
     </SafeAreaView>
   );
@@ -42,7 +33,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#121212',
-    marginTop: 40,
+    paddingTop: 40,
   },
   textwrapper: {
     flexDirection: 'row',
@@ -63,6 +54,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginHorizontal: 10,
     borderRadius: 5,
+    marginBottom:10
   },
   input: {
     width: '100%',

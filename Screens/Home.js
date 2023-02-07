@@ -11,8 +11,9 @@ const Home = () => {
     
     <View style={{flex:1,paddingHorizontal:15}}>
       {/* <View style={{height:50}}/> */}
-      <ScrollView showsVerticalScrollIndicator={false}>
       {/* <Header/> */}
+      <ScrollView showsVerticalScrollIndicator={false}>
+      <Header/>
       <BelowButton/>
       <Rechentplaylist />
       <View>

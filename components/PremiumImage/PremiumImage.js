@@ -4,7 +4,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 const PremiumImage = () => {
   return (
-    <View>
+    <View style={{flex:1,}}>
       <View style={styles.imgcontainer}> 
       <Image
         source={{uri:"https://source.unsplash.com/featured/300x237"}}
@@ -34,6 +34,7 @@ export default PremiumImage
 
 const styles = StyleSheet.create({
     playlistImage:{
+       
         height:350,
         width:"100%",
        borderRadius:40

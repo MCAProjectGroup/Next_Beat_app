@@ -8,16 +8,20 @@ import {
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Antdesign from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
+import Notificationpage from '../Notificationpage/Notificationpage';
 
 const Header = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View>
         <ScrollView>
           <View style={styles.textwrapper}>
             <Text style={styles.title}> Good Morning</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Notification")}>
               <Ionicons name="notifications-outline" size={24} color="#fff" />
+
             </TouchableOpacity>
             <View style={{width: 20}} />
             <TouchableOpacity>
@@ -38,7 +42,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
-    // flex:1,
+    flex:1,
     // height:50,
     height: '100%',
     // width: '100%',

@@ -9,7 +9,7 @@ const ListData = [
       rightTop2:"For 1 DAY",
       middleDesc:"1 day and 1 week palans . Ad-free music on mobile.Download 30 songs on 1 mobile device . Mobile only plan",
       bottomDesc:"Prices very according to duration of plan  apply",
-      bgColor:"#7A2C87",
+      bgColor:"#2196F3",
     },
     {
       leftTop:"Premium Individual",
@@ -17,16 +17,16 @@ const ListData = [
       rightTop2:"For 1 MONTH",
       middleDesc:"Ad-free music listing . Download to listen offline . Debit and credit cards accepted",
       bottomDesc:"Offer only for users who are new to Premium",
-      bgColor:"#FF5722"
+      bgColor:"#2E7D32"
   
     },
     {
       leftTop:"Premium Duo",
       rightTop1:"Free",
       rightTop2:"For 1 MONTH",
-      middleDesc:"2 Premium accounts . For couples who live together . Ad-free music listening . Debit and credit cards accepted",
+      middleDesc:"2 Premium accounts . For couples who live together . Ad-free music listening .",
       bottomDesc:"Offer only for users who are new to Premium",
-      bgColor:"#5E488B"
+      bgColor:"#815987"
   
     },
     {
@@ -44,7 +44,7 @@ const ListData = [
       rightTop2:"For 1 MONTH",
       middleDesc:"Ad-free music listing . Download to listen offline",
       bottomDesc:"Offer only for users who are new to Premium",
-      bgColor:"#E53935"
+      bgColor:"#FFA000"
   
     },
    
@@ -81,7 +81,7 @@ export default Premiumplans
 
 const styles = StyleSheet.create({
 container:{
-    
+  flex:1,
 },
 title:{
     color:"#fff",

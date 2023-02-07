@@ -3,7 +3,7 @@ import React from 'react'
 
 const Rechentplaylist = () => {
   return (
-    <View style={{marginTop:15}}>
+    <View style={{marginTop:15,flex:1,}}>
       <View style={styles.wrapper}>
         <TouchableOpacity style={styles.playlistdesc}>
         <Image

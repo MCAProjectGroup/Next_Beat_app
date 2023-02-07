@@ -16,6 +16,7 @@ export default Button
 
 const styles = StyleSheet.create({
     container:{
+        flex:1,
         padding:12,
         borderRadius:50,
         alignItems:'center',

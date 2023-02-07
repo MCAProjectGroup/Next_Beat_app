@@ -18,6 +18,7 @@ export default Searchitem
 
 const styles = StyleSheet.create({
     wrapper:{
+    flex:1,
     marginHorizontal:5,
     marginVertical:5,
   },

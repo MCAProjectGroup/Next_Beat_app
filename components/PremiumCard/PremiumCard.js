@@ -52,17 +52,17 @@ export default PremiumCard
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor:'#505050',
+    backgroundColor:'#333',
     height:70,
-    width:"90%",
+    width:"95%",
     color:"#fff",
     marginTop:30,
-    marginRight:20,
-    marginLeft:20,
+    // marginRight:10,
+    marginLeft:10,
     borderRadius:5,
     borderBottomColor:"grey",
     borderWidth:1,
-    borderColor:'#505050', 
+    borderColor:'#333', 
   
   },
   heading:{
@@ -75,11 +75,11 @@ const styles = StyleSheet.create({
   },
 
   bottomcontainer:{
-    backgroundColor:'#505050',
+    backgroundColor:'#333',
     height:240,
-    width:"90%",
-     marginRight:20,
-     marginLeft:20,
+    width:"95%",
+    //  marginRight:20,
+     marginLeft:10,
      borderRadius:5,
      alignItems:'center',
      
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     
   },
   plancontainer:{
-    backgroundColor:'#505050',
+    backgroundColor:'#333',
     height:70,
     width:"90%",
     color:"#fff",

@@ -57,6 +57,7 @@ export default FloatingMusicPlayer
 
 const styles = StyleSheet.create({
     container:{
+        flex:1,
         // position:'absolute',
         flexDirection:'row',
         alignItems:'center',

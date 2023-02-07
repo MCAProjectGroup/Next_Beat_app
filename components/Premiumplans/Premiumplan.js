@@ -26,7 +26,7 @@ const Premiumplan = ({leftTop,rightTop1,rightTop2,middleDesc,bottomDesc,bgColor}
 
       <View style={styles.bottomContainer}>
         <Text style={styles.bottomText}>
-            {bottomDesc}<Text style={{color:"#fff"}}>Terms and condition </Text>
+            {bottomDesc}<Text style={{color:"#fff"}}> Terms and condition </Text>
 
         </Text>
       </View>
@@ -42,13 +42,14 @@ export default Premiumplan
 const styles = StyleSheet.create({
     container:{
         backgroundColor:'#D85F89',
-        height:320,
-        width:"90%",
+        height:300,
+        width:"97%",
         marginTop:10,
-        marginRight:20,
-        marginLeft:20,
         borderRadius:5, 
         marginBottom:20,
+        marginLeft:5,
+       
+       
       },
       topcontainer:{
         flexDirection:'row',
@@ -103,18 +104,15 @@ const styles = StyleSheet.create({
         fontSize:18,
         textAlign:'center',
         
+        
     },
     bottomContainer:{
       marginHorizontal:20,
-        alignItems:'center',
-        justifyContent:'center',
-    
-
+      marginBottom:5,
     },
     bottomText:{
-        color:"#B4B4B4",
-        
-
+      color:"#B4B4B4",
+      textAlign:'center'
     }
 
 })

@@ -34,6 +34,7 @@ export default LibraryAddCard
 
 const styles = StyleSheet.create({
     wrapper:{
+        flex:1,
         flexDirection:'row',
         marginHorizontal:5,
         marginVertical:15,

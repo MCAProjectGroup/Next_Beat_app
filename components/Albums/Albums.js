@@ -4,7 +4,7 @@ import Playlist from '../Playlist/Playlist'
 
 const Albums = ({title}) => {
   return (
-    <View style={{marginTop:15}}>
+    <View style={{marginTop:15,flex:1}}>
       <Text style={styles.albumtitle}>{title}</Text>
       <View style={styles.albumwrap}>
         <ScrollView horizontal showsVerticalScrollIndicator={false}>

@@ -127,7 +127,7 @@ export default SearchCard
 
 const styles = StyleSheet.create({
   wrapper:{
-    
+    flex:1,
   },
 
 })
