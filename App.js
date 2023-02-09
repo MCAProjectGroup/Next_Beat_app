@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
+import { Button, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useLayoutEffect } from 'react'
 // import Login from './components/Login/Login'
 import axios from 'axios'
 import Notificationpage from './components/Notificationpage/Notificationpage'
 import BottomTabNavigation from './Navigtion/BottomTabNavigation'
 import SplashScreen from 'react-native-splash-screen'
 import Recentlypage from './components/Recentlypage/Recentlypage'
+import TrackPlayer, { AppKilledPlaybackBehavior, Capability } from 'react-native-track-player'
+import notifee, { AndroidStyle } from '@notifee/react-native';
 
 // import Signpage from './components/Signpage/Signpage'
 // import { NavigationContainer,DarkTheme } from '@react-navigation/native';
@@ -48,15 +50,82 @@ import Recentlypage from './components/Recentlypage/Recentlypage'
 
   // console.log("loader off")
   
+  var track1 = {
+    url: require("./a.mp3"), // Load media from the network
+    title: 'Memu Aagamu ft',
+    artist: 'Allu Arjun, Armaan Malik, and TRI.BE',
+    album: 'while(1<2)',
+    genre: 'Progressive House, Electro House',
+    date: '2014-05-20T07:00:00+00:00', // RFC 3339
+    artwork: 'https://picsum.photos/200/300', // Load artwork from the network
+    duration: 174 // Duration in seconds
+};
+
 
 const App = () => {
+  const addSong = async()=>{
+    await TrackPlayer.setupPlayer({
+      // autoUpdateMetadata:true
+    })
+
+    await TrackPlayer.updateOptions({
+      android:{
+        appKilledPlaybackBehavior:AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification
+      },
+      notificationCapabilities:[Capability.Play, Capability.Play, Capability.SeekTo]
+  });
+    await TrackPlayer.add(track1);
+    await TrackPlayer.play();
+
+  }
+
   useEffect(() => {
   //   ApiCall()
+  
   SplashScreen.hide();
+
+  addSong()
   }, [])
+
+  // const onDisplayNotification = async()=>{
+  //   // Request permissions (required for iOS)
+  //   await notifee.requestPermission()
+
+  //   // Create a channel (required for Android)
+  //   const channelId = await notifee.createChannel({
+  //     id: 'default',
+  //     name: 'Default Channel',
+  //   });
+
+  //   // Display a notification
+  //   await notifee.displayNotification({
+  //     title: 'Notification Title',
+  //     // title: 'Song Title,
+  //     body: 'Artist',
+  //     android: {
+  //       largeIcon: 'url/to/album/artwork',
+  //       style: {
+  //          type:  AndroidStyle.MEDIA,
+  //       },
+  //       actions: [
+  //         {
+  //           title: 'Play',
+  //           pressAction: {
+  //             id: 'snooze',
+  //           },
+  //           icon: 'value-of-custom-icon'
+  //         },
+  //       ],
+  //       channelId: 'channelId',
+  //     },
+  //   });
+  // }
+
   // return (
-  //   // <Text>Api Call</Text>
-  // )
+  //   <View>
+  //     <Button title="Display Notification" onPress={() => onDisplayNotification()} />
+  //   </View>
+  // );
   return (
         <View style={styles.wrapper}>
 
