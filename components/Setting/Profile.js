@@ -1,28 +1,26 @@
 import { StyleSheet, Text, View,Image,TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const LibraryCard = ({title}) => {
+const Profile = ({title}) => {
   return (
     <View style={{marginTop:15}}>
-      <View style={styles.wrapper}>
-        <TouchableOpacity style={styles.playlistdesc}>
-        <Image
-        source={{uri:"https://www.bollywoodhelpline.com/upload/articles/id6341301.jpg"}}
-        style={styles.playlistImage}
-        />
-        <View style={styles.artiststext}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.subtitle}>Artist</Text>
-        </View>
-        </TouchableOpacity>
-        </View>
-        </View>
+    <View style={styles.wrapper}>
+      <TouchableOpacity style={styles.playlistdesc}>
+      <Image
+      source={{uri:"https://www.bollywoodhelpline.com/upload/articles/id6341301.jpg"}}
+      style={styles.playlistImage}
+      />
+      <View style={styles.artiststext}>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.subtitle}>View Profile</Text>
+      </View>
+      </TouchableOpacity>
+      </View>
+      </View>
   )
 }
 
-
-
-export default LibraryCard
+export default Profile
 
 const styles = StyleSheet.create({
     wrapper:{
@@ -46,8 +44,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         marginRight:8,
         borderRadius:5,
-        alignItems:'center',
-        width:"50%",  
+        alignItems:'center', 
     },
     subtitle:{
         color:"#CCCCCC",

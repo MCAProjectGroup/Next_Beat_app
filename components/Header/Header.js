@@ -24,12 +24,12 @@ const Header = () => {
 
             </TouchableOpacity>
             <View style={{width: 20}} />
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Recentplay")}>
               <Antdesign name="clockcircleo" size={22} color="#fff" />
             </TouchableOpacity>
             <View style={{width: 20}} />
             <TouchableOpacity>
-              <Antdesign name="setting" size={22} color="#fff" />
+              <Antdesign name="setting" size={22} color="#fff"  onPress={() => navigation.navigate("Setting")}/>
             </TouchableOpacity>
           </View>
         </ScrollView>
