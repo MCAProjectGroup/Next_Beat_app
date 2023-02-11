@@ -1,10 +1,12 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 
 const Playlist = ({alubmTitle}) => {
+  const navigation = useNavigation();
   return (
-    <View>
-      <TouchableOpacity style={styles.wrapper}>
+    <View >
+      <TouchableOpacity style={styles.wrapper} onPress={() => navigation.navigate("playlist")}>
         <Image 
         source={{uri:"https://movieposters2.com/images/1516929-b.jpg"}}
         style={styles.playlistImage}

@@ -4,6 +4,7 @@ import React, {useEffect} from 'react';
 import axios from 'axios';
 import BottomTabNavigation from './Navigtion/BottomTabNavigation';
 import SplashScreen from 'react-native-splash-screen';
+import Musicalbum from './components/MusicAlbum/Musicalbum';
 
 // import Signpage from './components/Signpage/Signpage'
 // import { NavigationContainer,DarkTheme } from '@react-navigation/native';
@@ -55,6 +56,7 @@ const App = () => {
   // )
   return (
     <View style={styles.wrapper}>
+      {/* <Musicalbum/> */}
       <BottomTabNavigation />
     </View>
 
