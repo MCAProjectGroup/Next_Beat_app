@@ -1,5 +1,5 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 // import Login from './components/Login/Login'
 import axios from 'axios'
 import Notificationpage from './components/Notificationpage/Notificationpage'
@@ -8,6 +8,15 @@ import SplashScreen from 'react-native-splash-screen'
 import Recentlypage from './components/Recentlypage/Recentlypage'
 import TrackPlayer, { AppKilledPlaybackBehavior, Capability } from 'react-native-track-player'
 import notifee, { AndroidStyle } from '@notifee/react-native';
+import { setupPlayer, addTracks } from './service';
+
+
+// import {StyleSheet, Text, View} from 'react-native';
+// import React, {useEffect} from 'react';
+// import Login from './components/Login/Login'
+// import axios from 'axios';
+// import BottomTabNavigation from './Navigtion/BottomTabNavigation';
+// import SplashScreen from 'react-native-splash-screen';
 
 // import Signpage from './components/Signpage/Signpage'
 // import { NavigationContainer,DarkTheme } from '@react-navigation/native';
@@ -16,37 +25,20 @@ import notifee, { AndroidStyle } from '@notifee/react-native';
 
 // const Stack = createNativeStackNavigator();
 // const ApiCall = async()=>{
-  // screen loader
-  // console.log("loader on")
-  // fetch('https://jsonplaceholder.typicode.com/todos/2')
-  // .then((res)=>{res.json()})
-  // console.log(resJson);
-  // const res2 = await fetch('https://jsonplaceholder.typicode.com/todos/2');
-  // const resJson2 = await res.json()
-  // console.log("loader off")
-  
-  // loaderOff()
+// screen loader
+// console.log("loader on")
+// fetch('https://jsonplaceholder.typicode.com/todos/2')
+// .then((res)=>{res.json()})
+// console.log(resJson);
+// const res2 = await fetch('https://jsonplaceholder.typicode.com/todos/2');
+// const resJson2 = await res.json()
+// console.log("loader off")
 
-  // const res = await axios({
-  //   url:'https://jsonplaceholder.typicode.com/todos/1',
-  //   method:"get",
-    
-  // })
-  // const res2 = await axios({
-  //   url:'https://jsonplaceholder.typicode.com/todos/2',
-  //   method:"get",
-    
-  // })
-  // const res3 = await axios({
-  //   url:'https://jsonplaceholder.typicode.com/todos/3',
-  //   method:"get",
-    
-  // })
+// loaderOff()
 
-  // console.log(res.data, res2.data, res3.data);
-  
-  
-  // console.log({res:res.data});
+// const res = await axios({
+//   url:'https://jsonplaceholder.typicode.com/todos/1',
+//   method:"get",
 
   // console.log("loader off")
   
@@ -61,31 +53,71 @@ import notifee, { AndroidStyle } from '@notifee/react-native';
     duration: 174 // Duration in seconds
 };
 
+// })
+// const res2 = await axios({
+//   url:'https://jsonplaceholder.typicode.com/todos/2',
+//   method:"get",
+
+// })
+// const res3 = await axios({
+//   url:'https://jsonplaceholder.typicode.com/todos/3',
+//   method:"get",
+
+// })
+
+// console.log(res.data, res2.data, res3.data);
+
+// console.log({res:res.data});
+
+// console.log("loader off")
 
 const App = () => {
-  const addSong = async()=>{
-    await TrackPlayer.setupPlayer({
-      // autoUpdateMetadata:true
-    })
+  const [IsPlayerReady, setIsPlayerReady] = useState(false);
+  // const addSong = async()=>{
+  //   await TrackPlayer.setupPlayer({
+  //     // autoUpdateMetadata:true
+  //   })
 
+  //   await TrackPlayer.updateOptions({
+  //     android:{
+  //       appKilledPlaybackBehavior:AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification
+  //     },
+  //     notificationCapabilities:[Capability.Play, Capability.Play, Capability.SeekTo]
+  // });
+  //   await TrackPlayer.add(track1);
+
+  const start = async () => {
+    // Set up the player
+    await TrackPlayer.setupPlayer();
     await TrackPlayer.updateOptions({
-      android:{
-        appKilledPlaybackBehavior:AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification
-      },
-      notificationCapabilities:[Capability.Play, Capability.Play, Capability.SeekTo]
-  });
-    await TrackPlayer.add(track1);
-    await TrackPlayer.play();
+      notificationCapabilities:[Capability.Play,Capability.Pause, Capability.Stop]
+    })
+    
 
-  }
+    // Add a track to the queue
+    await TrackPlayer.add({
+        id: 'trackId',
+        url: require('./a.mp3'),
+        title: 'Track Title',
+        artist: 'Track Artist',
+        artwork: "https://picsum.photos/200/300"
+    });
 
+    // Start playing it
+    // await TrackPlayer.play();
+};
+  // }
   useEffect(() => {
-  //   ApiCall()
-  
-  SplashScreen.hide();
+  start();
+  SplashScreen.hide()
+  }, []);
 
-  addSong()
-  }, [])
+  // useEffect(() => {
+  // //   ApiCall()
+  
+
+  // addSong()
+  // }, [])
 
   // const onDisplayNotification = async()=>{
   //   // Request permissions (required for iOS)
@@ -126,14 +158,13 @@ const App = () => {
   //     <Button title="Display Notification" onPress={() => onDisplayNotification()} />
   //   </View>
   // );
+  // if(!IsPlayerReady)
+  // return null;
   return (
-        <View style={styles.wrapper}>
+    <View style={styles.wrapper}>
+      <BottomTabNavigation />
+    </View>
 
-          {/* <Notificationpage /> */}
-          {/* <Recentlypage/> */}
-          <BottomTabNavigation />
-        </View>
-    
     // <NavigationContainer theme={DarkTheme}>
     //   <Stack.Navigator screenOptions={{headerShown:true}}>
     //     <Stack.Screen name="Welcome" options={{
@@ -149,18 +180,18 @@ const App = () => {
     //       title:"login your account"
     //     }}
     //     component={Login} />
-        
+
     //   </Stack.Navigator>
     // </NavigationContainer>
-  
-  )}
+  );
+};
 
-export default App
+export default App;
 
 const styles = StyleSheet.create({
-  wrapper:{ 
-    flex:1, 
-      backgroundColor:"#121212",
-      Color:"#fff",
-  }
-})
+  wrapper: {
+    flex: 1,
+    backgroundColor: '#121212',
+    Color: '#fff',
+  },
+});

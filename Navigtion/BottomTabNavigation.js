@@ -11,6 +11,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../components/Header/Header';
 import StackNavigation from './StackNavigation';
+import { TabBarOptions } from '../static';
+import BottomTabDesign from './BottomTabDesign';
 // import Header from '../Header/Header';
 
 
@@ -22,18 +24,20 @@ const BottomTabNavigation = () => {
       <Tab.Navigator  initialRouteName='Home'
       screenOptions={{
         tabBarStyle:{
-          height:65,
-          paddingTop:10,
-          backgroundColor:"#040404",
-          borderTopWidth:0,
-          marginBottom:5
+        
+          
           
         },
+        
+
         tabBarInactiveTintColor:"grey",
         tabBarActiveTintColor:"#fff"
       }}
+      tabBar={(props)=>(
+       <BottomTabDesign {...props} />
+      )}
       >
-      <Tab.Screen name="Home" component={StackNavigation}
+      <Tab.Screen name="StackNavigation" component={StackNavigation}
       options={{ 
         // header:()=>(
          
@@ -57,7 +61,7 @@ const BottomTabNavigation = () => {
         )
       }}
       />
-      <Tab.Screen name=" Your Library" component={Library}
+      <Tab.Screen name="YourLibrary" component={Library}
        options={{ headerShown:false,
         tabBarIcon:({color}) =>(
           <Icon name="library" size={25} color={color} />

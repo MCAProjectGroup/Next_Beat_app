@@ -2,6 +2,7 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import React from 'react';
+// import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
 
 const Newsongs = ({date, sname, aname}) => {
   return (
@@ -10,23 +11,15 @@ const Newsongs = ({date, sname, aname}) => {
         <View style={styles.wrapper}>
           <View style={styles.leftcontainer}>
             <Image
-              source={{uri: 'https://source.unsplash.com/featured/300x236'}}
-              style={styles.playlistImage}
+              source={{uri: 'https://i.redd.it/tmd18cm5l55a1.jpg'}}
+              style={[styles.playlistImage]}
             />
             <Text style={styles.title}>Single</Text>
             {/* <View style={styles.icons}>
         <Feather name="heart" size={24} color="#fff" />
         <Feather name="more-vertical" size={24} color="grey" style={{marginLeft:20}}/>
         </View> */}
-            <View style={styles.app_icon}>
-              <View style={styles.right_icon}>
-                <Feather name="heart" size={24} color="#fff" />
-                <Feather name="more-vertical" size={24} color="grey" />
-              </View>
-              <View style={styles.left_icon}>
-                <AntDesign name="play" size={30} color="#fff" />
-              </View>
-            </View>
+            
           </View>
 
           <View style={styles.rightcontainer}>
@@ -35,6 +28,15 @@ const Newsongs = ({date, sname, aname}) => {
             <Text style={{color: 'grey'}}>{aname}</Text>
           </View>
         </View>
+        <View style={styles.app_icon}>
+              <View style={styles.right_icon}>
+                <Feather name="heart" size={24} color="#fff" />
+                <Feather name="more-vertical" size={24} color="grey" />
+              </View>
+              <View style={styles.left_icon}>
+                <AntDesign name="play" size={30} color="#fff" />
+              </View>
+            </View>
         <View style={{width: '100%', backgroundColor: 'grey', height: 0.5}}></View>
       </TouchableOpacity>
     </>
@@ -48,13 +50,14 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 10,
     flexDirection: 'row',
-    backgroundColor: 'blue',
+    // backgroundColor: 'blue',
     paddingHorizontal: 5,
     paddingVertical: 5,
   },
   playlistImage: {
     height: 100,
     width: 100,
+    resizeMode:'cover'
   },
   title: {
     color: '#fff',
@@ -74,6 +77,9 @@ const styles = StyleSheet.create({
   app_icon: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent:"space-between",
+    margin:10,
+    marginTop:0
   },
 
   right_icon: {

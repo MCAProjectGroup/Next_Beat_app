@@ -16,7 +16,7 @@ const LibraryHeader = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.textwrapper}>
         <Image
-          source={{uri: 'https://source.unsplash.com/featured/300x207'}}
+          source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3CWx3HdiVZnwYAVNc2aOmf5C7mjcWaytU_A&usqp=CAU'}}
           style={styles.playlistImage}
         />
         <Text style={styles.title}>Your Library</Text>
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     width: 50,
     borderRadius: 999,
     marginLeft: 10,
+    resizeMode:'contain'
   },
   libraryicon:{
    margin:15

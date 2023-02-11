@@ -6,6 +6,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../Screens/Home';
 import Notificationpage from '../components/Notificationpage/Notificationpage';
+import Recentlypage from '../components/Recentlypage/Recentlypage';
+import Header from '../components/Header/Header';
+import Setting from '../components/Setting/Setting';
+import Language from '../components/Setting/Language';
 
 function HomeScreen() {
   return (
@@ -21,20 +25,21 @@ function StackNavigation() {
   return (
     // <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" option={{
-                    // headerShown:false,
-                    headerShown:false,
-
-            //   header:()=>(
-            //     <View style={{height:60, backgroundColor:"red"}}>
-            //         <Header />
-            //     </View>
-            //   ),
-            
-        
-              
-        }} component={Home} />
+        <Stack.Screen name="Home" 
+        options={{
+            header:()=>(
+         
+          <View style={{height:60, backgroundColor:"red"}}>
+              <Header />
+          </View>
+        ),
+       
+          }}
+        component={Home} />
         <Stack.Screen name="Notification" component={Notificationpage} />
+        <Stack.Screen name="Recentplay" component={Recentlypage} />
+        <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="Language" component={Language} />
       </Stack.Navigator>
     // </NavigationContainer>
   );

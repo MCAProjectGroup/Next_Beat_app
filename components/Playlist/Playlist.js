@@ -6,7 +6,7 @@ const Playlist = ({alubmTitle}) => {
     <View>
       <TouchableOpacity style={styles.wrapper}>
         <Image 
-        source={{uri:"https://source.unsplash.com/featured/300x236"}}
+        source={{uri:"https://movieposters2.com/images/1516929-b.jpg"}}
         style={styles.playlistImage}
         />
         <Text style={styles.title}>{alubmTitle}</Text>
@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     },
     playlistImage:{
         aspectRatio:1,
-        borderRadius:5
+        borderRadius:5,
+     
     },
     title:{
         color:"#d1c7c7",
