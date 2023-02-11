@@ -31,18 +31,29 @@ const App = () => {
     // Set up the player
     await TrackPlayer.setupPlayer();
     await TrackPlayer.updateOptions({
-      notificationCapabilities:[Capability.Play,Capability.Pause, Capability.Stop]
+      notificationCapabilities:[Capability.Play,Capability.Pause, Capability.Stop, Capability.SkipToNext, Capability.SkipToPrevious, Capability.SeekTo, Capability.Skip],
+      android:{
+        appKilledPlaybackBehavior:AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification
+      }
     })
     
 
     // Add a track to the queue
-    await TrackPlayer.add({
+    await TrackPlayer.add([{
         id: 'trackId',
         url: require('./a.mp3'),
         title: 'Track Title',
         artist: 'Track Artist',
-        artwork: "https://picsum.photos/200/300"
-    });
+        artwork: "https://picsum.photos/1920/1080"
+    },
+    {
+      id: 'trackId2',
+      url: require('./a.mp3'),
+      title: 'Track Title',
+      artist: 'Track Artist',
+      artwork: "https://picsum.photos/1920/1080"
+  }
+  ]);
 
     // Start playing it
     // await TrackPlayer.play();

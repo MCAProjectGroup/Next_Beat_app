@@ -28,6 +28,7 @@ const BottomTabDesign = (props) => {
     const PlayerManager = async ()=>{
         // console.log("pressede");
         let t =  await TrackPlayer.getState()
+        await TrackPlayer.updateOptions()
         // if(t!=="playing"){
             // return setIsPlaying(true)
         // }
