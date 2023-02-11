@@ -41,18 +41,18 @@ const App = () => {
     // Add a track to the queue
     await TrackPlayer.add([{
         id: 'trackId',
-        url: require('./a.mp3'),
-        title: 'Track Title',
-        artist: 'Track Artist',
-        artwork: "https://picsum.photos/1920/1080",
+        url: require('./song1.mp3'),
+        title: 'Raatan Lambiyan',
+        artist: 'Jubin Nautiyal, Asees Kaur',
+        artwork: "https://www.pagalworld.com.se/siteuploads/thumb/sft7/3198_4.jpg",
         duration:174,
     },
     {
       id: 'trackId2',
-      url: require('./a.mp3'),
-      title: 'Track Title',
-      artist: 'Track Artist',
-      artwork: "https://picsum.photos/1920/1080",
+      url: require('./song2.mp3'),
+      title: 'Baarish Mein Tum',
+      artist: 'Neha Kakkar, Rohanpreet Singh',
+      artwork: "https://www.pagalworld.com.se/siteuploads/thumb/sft128/63993_4.jpg",
       duration:174,
 
   }

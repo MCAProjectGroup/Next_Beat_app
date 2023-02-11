@@ -44,7 +44,8 @@ const FloatingMusicPlayer = () => {
         </TouchableOpacity>
         <View style={{marginHorizontal:15}}>
             <TouchableOpacity>
-            <MCI name="play" size={20} color="#fff" />
+            <MCI 
+            />
             </TouchableOpacity>
             
         </View>
