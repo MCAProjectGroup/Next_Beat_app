@@ -14,7 +14,10 @@ module.exports = async function () {
     TrackPlayer.addEventListener('remote-next', () => {
       TrackPlayer.skipToNext();
     });
-
+    TrackPlayer.addEventListener(Event.RemoteLike, () => {
+      // TrackPlayer.();
+      console.log("Liked");
+    });
     TrackPlayer.addEventListener('remote-previous', () => {
       TrackPlayer.skipToPrevious();
     });
@@ -34,6 +37,8 @@ export const PlaybackService = async function() {
   TrackPlayer.addEventListener(Event.RemotePlay, () => TrackPlayer.play());
 
   TrackPlayer.addEventListener(Event.RemotePause, () => TrackPlayer.pause());
+  TrackPlayer.addEventListener(Event.RemoteStop, () => TrackPlayer.pause());
+  TrackPlayer.addEventListener(Event.RemoteLike, () => console.log("Liked"));
 
   // ...
 
