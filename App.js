@@ -10,66 +10,7 @@ import TrackPlayer, { AppKilledPlaybackBehavior, Capability } from 'react-native
 import notifee, { AndroidStyle } from '@notifee/react-native';
 import { setupPlayer, addTracks } from './service';
 
-
-// import {StyleSheet, Text, View} from 'react-native';
-// import React, {useEffect} from 'react';
-// import Login from './components/Login/Login'
-// import axios from 'axios';
-// import BottomTabNavigation from './Navigtion/BottomTabNavigation';
-// import SplashScreen from 'react-native-splash-screen';
-
-// import Signpage from './components/Signpage/Signpage'
-// import { NavigationContainer,DarkTheme } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import Welcome from './components/Welcome/Welcome'
-
-// const Stack = createNativeStackNavigator();
-// const ApiCall = async()=>{
-// screen loader
-// console.log("loader on")
-// fetch('https://jsonplaceholder.typicode.com/todos/2')
-// .then((res)=>{res.json()})
-// console.log(resJson);
-// const res2 = await fetch('https://jsonplaceholder.typicode.com/todos/2');
-// const resJson2 = await res.json()
-// console.log("loader off")
-
-// loaderOff()
-
-// const res = await axios({
-//   url:'https://jsonplaceholder.typicode.com/todos/1',
-//   method:"get",
-
-  // console.log("loader off")
-  
-  var track1 = {
-    url: require("./a.mp3"), // Load media from the network
-    title: 'Memu Aagamu ft',
-    artist: 'Allu Arjun, Armaan Malik, and TRI.BE',
-    album: 'while(1<2)',
-    genre: 'Progressive House, Electro House',
-    date: '2014-05-20T07:00:00+00:00', // RFC 3339
-    artwork: 'https://picsum.photos/200/300', // Load artwork from the network
-    duration: 174 // Duration in seconds
-};
-
-// })
-// const res2 = await axios({
-//   url:'https://jsonplaceholder.typicode.com/todos/2',
-//   method:"get",
-
-// })
-// const res3 = await axios({
-//   url:'https://jsonplaceholder.typicode.com/todos/3',
-//   method:"get",
-
-// })
-
-// console.log(res.data, res2.data, res3.data);
-
-// console.log({res:res.data});
-
-// console.log("loader off")
+import Musicalbum from './components/MusicAlbum/Musicalbum';
 
 const App = () => {
   const [IsPlayerReady, setIsPlayerReady] = useState(false);
@@ -162,6 +103,7 @@ const App = () => {
   // return null;
   return (
     <View style={styles.wrapper}>
+      {/* <Musicalbum/> */}
       <BottomTabNavigation />
     </View>
 

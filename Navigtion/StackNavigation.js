@@ -10,6 +10,7 @@ import Recentlypage from '../components/Recentlypage/Recentlypage';
 import Header from '../components/Header/Header';
 import Setting from '../components/Setting/Setting';
 import Language from '../components/Setting/Language';
+import Musicalbum from '../components/MusicAlbum/Musicalbum';
 
 function HomeScreen() {
   return (
@@ -40,6 +41,7 @@ function StackNavigation() {
         <Stack.Screen name="Recentplay" component={Recentlypage} />
         <Stack.Screen name="Setting" component={Setting} />
         <Stack.Screen name="Language" component={Language} />
+        <Stack.Screen name="playlist" component={Musicalbum} />
       </Stack.Navigator>
     // </NavigationContainer>
   );
