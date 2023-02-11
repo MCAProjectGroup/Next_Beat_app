@@ -1,16 +1,19 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import {Button, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 // import Login from './components/Login/Login'
-import axios from 'axios'
-import Notificationpage from './components/Notificationpage/Notificationpage'
-import BottomTabNavigation from './Navigtion/BottomTabNavigation'
-import SplashScreen from 'react-native-splash-screen'
-import Recentlypage from './components/Recentlypage/Recentlypage'
-import TrackPlayer, { AppKilledPlaybackBehavior, Capability } from 'react-native-track-player'
-import notifee, { AndroidStyle } from '@notifee/react-native';
-import { setupPlayer, addTracks } from './service';
-
+import axios from 'axios';
+import Notificationpage from './components/Notificationpage/Notificationpage';
+import BottomTabNavigation from './Navigtion/BottomTabNavigation';
+import SplashScreen from 'react-native-splash-screen';
+import Recentlypage from './components/Recentlypage/Recentlypage';
+import TrackPlayer, {
+  AppKilledPlaybackBehavior,
+  Capability,
+} from 'react-native-track-player';
+import notifee, {AndroidStyle} from '@notifee/react-native';
+import {setupPlayer, addTracks} from './service';
 import Musicalbum from './components/MusicAlbum/Musicalbum';
+import messaging from '@react-native-firebase/messaging';
 
 const App = () => {
   const [IsPlayerReady, setIsPlayerReady] = useState(false);
@@ -31,45 +34,68 @@ const App = () => {
     // Set up the player
     await TrackPlayer.setupPlayer();
     await TrackPlayer.updateOptions({
-      notificationCapabilities:[Capability.Play,Capability.Pause, Capability.Stop, Capability.SkipToNext, Capability.SkipToPrevious, Capability.SeekTo],
-      android:{
-        appKilledPlaybackBehavior:AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification
-      }
-    })
-    
+      notificationCapabilities: [
+        Capability.Play,
+        Capability.Pause,
+        Capability.Stop,
+        Capability.SkipToNext,
+        Capability.SkipToPrevious,
+        Capability.SeekTo,
+      ],
+      android: {
+        appKilledPlaybackBehavior:
+          AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
+      },
+    });
 
     // Add a track to the queue
-    await TrackPlayer.add([{
+    await TrackPlayer.add([
+      {
         id: 'trackId',
         url: require('./song1.mp3'),
         title: 'Raatan Lambiyan',
         artist: 'Jubin Nautiyal, Asees Kaur',
-        artwork: "https://www.pagalworld.com.se/siteuploads/thumb/sft7/3198_4.jpg",
-        duration:174,
-    },
-    {
-      id: 'trackId2',
-      url: require('./song2.mp3'),
-      title: 'Baarish Mein Tum',
-      artist: 'Neha Kakkar, Rohanpreet Singh',
-      artwork: "https://www.pagalworld.com.se/siteuploads/thumb/sft128/63993_4.jpg",
-      duration:174,
-
-  }
-  ]);
+        artwork:
+          'https://www.pagalworld.com.se/siteuploads/thumb/sft7/3198_4.jpg',
+        duration: 174,
+      },
+      {
+        id: 'trackId2',
+        url: require('./song2.mp3'),
+        title: 'Baarish Mein Tum',
+        artist: 'Neha Kakkar, Rohanpreet Singh',
+        artwork:
+          'https://www.pagalworld.com.se/siteuploads/thumb/sft128/63993_4.jpg',
+        duration: 174,
+      },
+    ]);
 
     // Start playing it
     // await TrackPlayer.play();
-};
+  };
   // }
+
+  const initialize=async()=>{
+    const token = await messaging().getToken();
+    console.log({token});
+
+  }
+
   useEffect(() => {
-  start();
-  SplashScreen.hide()
+    start();
+    SplashScreen.hide();
+    initialize()
   }, []);
 
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
+  }, []);
   // useEffect(() => {
   // //   ApiCall()
-  
 
   // addSong()
   // }, [])
