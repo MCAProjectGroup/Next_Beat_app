@@ -13,12 +13,12 @@ const Albumheader = () => {
           <Feather name="search" size={20} color="#fff" />
           <TextInput
             style={styles.searchInputText}
-            placeholder={'search here ...'}
-            placeholderTextColor="#fff"
+            placeholder={'Search here ...'}
+            placeholderTextColor="grey"
           />
         </View>
         <View style={styles.right_searchbar}>
-          <Text style={{color: '#fff', fontSize: 16}}>Sort</Text>
+          <Text style={{color: '#fff', fontSize: 14, fontWeight:"700"}}>Sort</Text>
         </View>
       </View>
 
@@ -87,7 +87,7 @@ export default Albumheader;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 5,
+    paddingTop: 10,
     marginHorizontal: 10,
     paddingBottom:15
   },
@@ -100,20 +100,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   left_searchbar: {
-    backgroundColor: '#808080',
+    backgroundColor: 'rgba(123, 117, 117,0.2)',
     height: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
     flex: 1,
-    borderRadius: 5,
+    borderRadius: 4,
   },
   right_searchbar: {
-    backgroundColor: '#808080',
+    // backgroundColor: '#808080',
+    backgroundColor: 'rgba(123, 117, 117,0.2)',
+
     // flex:1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 5,
+    borderRadius: 4,
     width: 60,
     marginLeft: 10,
     height: '100%',
@@ -121,7 +123,9 @@ const styles = StyleSheet.create({
   searchInputText: {
     width: '100%',
     height: '100%',
-    fontSize: 18,
+    fontSize: 14,
+    fontWeight:"600",
+    paddingHorizontal:10,
     placeholderTextColor: 'red',
   },
 
