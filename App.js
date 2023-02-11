@@ -31,7 +31,7 @@ const App = () => {
     // Set up the player
     await TrackPlayer.setupPlayer();
     await TrackPlayer.updateOptions({
-      notificationCapabilities:[Capability.Play,Capability.Pause, Capability.Stop, Capability.SkipToNext, Capability.SkipToPrevious, Capability.SeekTo, Capability.Skip],
+      notificationCapabilities:[Capability.Play,Capability.Pause, Capability.Stop, Capability.SkipToNext, Capability.SkipToPrevious, Capability.SeekTo],
       android:{
         appKilledPlaybackBehavior:AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification
       }
@@ -44,14 +44,17 @@ const App = () => {
         url: require('./a.mp3'),
         title: 'Track Title',
         artist: 'Track Artist',
-        artwork: "https://picsum.photos/1920/1080"
+        artwork: "https://picsum.photos/1920/1080",
+        duration:174,
     },
     {
       id: 'trackId2',
       url: require('./a.mp3'),
       title: 'Track Title',
       artist: 'Track Artist',
-      artwork: "https://picsum.photos/1920/1080"
+      artwork: "https://picsum.photos/1920/1080",
+      duration:174,
+
   }
   ]);
 
