@@ -77,6 +77,7 @@ export const PlaybackService = async function() {
   TrackPlayer.addEventListener(Event.RemotePause, () => TrackPlayer.pause());
   TrackPlayer.addEventListener(Event.RemoteStop, () => TrackPlayer.pause());
   TrackPlayer.addEventListener(Event.RemoteLike, () => console.log("Liked"));
+  TrackPlayer.addEventListener('remote-stop', () => TrackPlayer.destroy());
 
   // ...
 

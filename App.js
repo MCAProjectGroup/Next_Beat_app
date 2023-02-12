@@ -13,7 +13,7 @@ import TrackPlayer, {
   State,
   useTrackPlayerEvents,
 } from 'react-native-track-player';
-import notifee, {AndroidStyle} from '@notifee/react-native';
+import notifee, {AndroidImportance, AndroidStyle} from '@notifee/react-native';
 import Musicalbum from './components/MusicAlbum/Musicalbum';
 import messaging from '@react-native-firebase/messaging';
 // import { setupPlayerManager } from './service';
@@ -36,6 +36,7 @@ export const trackList = [
     duration: 227,
   },
 ]
+
 
 const setupPlayerManager = async()=>{
   let isSetup = false;
@@ -136,9 +137,15 @@ const App = () => {
     initialize()
   }, []);
 
+  async function onMessageReceived(message) {
+    // Do something
+  }
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+      // Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+      onDisplayNotification(remoteMessage)
+      // messaging().onMessage(onDisplayNotification);
+      // messaging().setBackgroundMessageHandler(onDisplayNotification);
     });
 
     return unsubscribe;
@@ -149,39 +156,31 @@ const App = () => {
   // addSong()
   // }, [])
 
-  // const onDisplayNotification = async()=>{
-  //   // Request permissions (required for iOS)
-  //   await notifee.requestPermission()
+  const onDisplayNotification = async(remoteMessage)=>{
+    // Request permissions (required for iOS)
+    await notifee.requestPermission()
 
-  //   // Create a channel (required for Android)
-  //   const channelId = await notifee.createChannel({
-  //     id: 'default',
-  //     name: 'Default Channel',
-  //   });
+    // Create a channel (required for Android)
+    const channelId =await notifee.createChannel({
+      id:"important1",
+      name:"important1",
+      importance:AndroidImportance.HIGH
+    })
+    
 
-  //   // Display a notification
-  //   await notifee.displayNotification({
-  //     title: 'Notification Title',
-  //     // title: 'Song Title,
-  //     body: 'Artist',
-  //     android: {
-  //       largeIcon: 'url/to/album/artwork',
-  //       style: {
-  //          type:  AndroidStyle.MEDIA,
-  //       },
-  //       actions: [
-  //         {
-  //           title: 'Play',
-  //           pressAction: {
-  //             id: 'snooze',
-  //           },
-  //           icon: 'value-of-custom-icon'
-  //         },
-  //       ],
-  //       channelId: 'channelId',
-  //     },
-  //   });
-  // }
+    // Display a notification
+    await notifee.displayNotification({
+      title: remoteMessage?.notification?.title||'Notification Title',
+      // title: 'Song Title,
+      body:  remoteMessage?.notification?.body||'Artist',
+      android: {
+      
+        importance:AndroidImportance.HIGH,
+     
+        channelId
+      },
+    });
+  }
 
   // return (
   //   <View>

@@ -5,11 +5,34 @@ import Feather from 'react-native-vector-icons/Feather'
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
 import Slider from '@react-native-community/slider';
 import { SongManagerOptions } from '../../static'
-import { State, usePlaybackState } from 'react-native-track-player'
+import { State, usePlaybackState,useProgress } from 'react-native-track-player'
+
+function pad(n, width, z = 0) {
+    n = n + '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+  
+const minutesAndSeconds = (position) => ([
+    pad(Math.floor(position / 60), 2),
+    pad(position % 60, 2),
+]);
+ const secondsToHHMMSS = (seconds) => {
+    // credits - https://stackoverflow.com/a/37096512
+
+    seconds = Number(seconds);
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = Math.floor((seconds % 3600) % 60);
+
+    const hrs = h > 0 ? (h < 10 ? `0${h}:` : `${h}:`) : '';
+    const mins = m > 0 ? (m < 10 ? `0${m}:` : `${m}:`) : '00:';
+    const scnds = s > 0 ? (s < 10 ? `0${s}` : s) : '00';
+    return `${hrs}${mins}${scnds}`;
+}
 
 const SongPlayPopUp = (props) => {
     const playerState = usePlaybackState();
-
+    const progress = useProgress();
     async function handlePlayPress() {
       if(await TrackPlayer.getState() == State.Playing) {
         setIsPlaying(false)
@@ -21,6 +44,8 @@ const SongPlayPopUp = (props) => {
 
       }
     }
+    // console.log({progress});
+
     return (
         <Modal animationType='slide' visible={props.show} onRequestClose={props.onClose}>
             <View style={styles.header}>
@@ -55,9 +80,11 @@ const SongPlayPopUp = (props) => {
                         <Slider
                             style={styles.sliderStyle}
                             minimumValue={0}
-                            maximumValue={120}
+                            maximumValue={progress.duration}
                             // step={1}
-                            role="progressbar"
+                            
+                            value={progress.position}
+                            // role="progressbar"
                             thumbTintColor="#fff"
                             // thumbImage={}
                             minimumTrackTintColor="#FFFFFF"
@@ -66,8 +93,8 @@ const SongPlayPopUp = (props) => {
 
                         />
                         <View style={styles.timeLineContainer}>
-                            <Text style={{color:"#fff"}}>0.00</Text>
-                            <Text style={{color:"#fff"}}>2.30</Text>
+                            <Text style={{color:"#fff"}}>{secondsToHHMMSS(progress.position)}</Text>
+                            <Text style={{color:"#fff"}}>{secondsToHHMMSS(progress.duration)}</Text>
                         </View>
 
                         <View style={styles.songManageMenu}>
