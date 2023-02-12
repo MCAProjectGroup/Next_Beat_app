@@ -4,8 +4,23 @@ import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../utils'
 import Feather from 'react-native-vector-icons/Feather'
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
 import Slider from '@react-native-community/slider';
+import { SongManagerOptions } from '../../static'
+import { State, usePlaybackState } from 'react-native-track-player'
 
 const SongPlayPopUp = (props) => {
+    const playerState = usePlaybackState();
+
+    async function handlePlayPress() {
+      if(await TrackPlayer.getState() == State.Playing) {
+        setIsPlaying(false)
+        TrackPlayer.pause();
+      }
+      else {
+        TrackPlayer.play();
+        setIsPlaying(true)
+
+      }
+    }
     return (
         <Modal animationType='slide' visible={props.show} onRequestClose={props.onClose}>
             <View style={styles.header}>
@@ -57,9 +72,12 @@ const SongPlayPopUp = (props) => {
 
                         <View style={styles.songManageMenu}>
                             {
-                                ['shuffle','skip-previous','pause-circle','skip-next','repeat'].map((item, index)=>(
-                                    <TouchableOpacity onPress={()=>console.log(item)}>
-                                        <MCI name={item} size={32+(index===2?16:0)}  color="#fff"/>
+                               SongManagerOptions.map((item, index)=>(
+                                    <TouchableOpacity onPress={()=>{
+                                        console.log(item)
+                                        item.onPress()
+                                        }}>
+                                        <MCI name={index===2?playerState == State.Playing ? 'pause' : 'play':item.icon} size={32+(index===2?16:0)}  color="#fff"/>
                                     </TouchableOpacity>
                                 ))
                             }

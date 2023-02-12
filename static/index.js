@@ -1,6 +1,7 @@
 import MCI from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
+import TrackPlayer, { RepeatMode, State } from 'react-native-track-player';
 
 export const TabBarOptions = [
     {
@@ -24,4 +25,37 @@ export const TabBarOptions = [
         Icon:({color})=><MCI name="spotify" size={25} color={color} />
     },
 
+]
+
+export const SongManagerOptions =  [
+    {
+        icon:'shuffle',
+        onPress:()=>{}
+    },
+    {
+        icon:'skip-previous',
+        onPress:()=> TrackPlayer.skipToPrevious()
+    },
+    {
+        icon:'pause-circle',
+        onPress:async()=>{
+            if(await TrackPlayer.getState() == State.Playing) {
+                // setIsPlaying(false)
+                TrackPlayer.pause();
+              }
+              else {
+                TrackPlayer.play();
+                // setIsPlaying(true)
+        
+              }
+        }
+    },
+    {
+        icon:'skip-next',
+        onPress:()=>TrackPlayer.skipToNext()
+    },
+    {
+        icon:'repeat',
+        onPress:()=>TrackPlayer.setRepeatMode(RepeatMode.Queue)
+    }
 ]
