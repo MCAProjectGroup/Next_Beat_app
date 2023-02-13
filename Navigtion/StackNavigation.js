@@ -11,6 +11,10 @@ import Header from '../components/Header/Header';
 import Setting from '../components/Setting/Setting';
 import Language from '../components/Setting/Language';
 import Musicalbum from '../components/MusicAlbum/Musicalbum';
+import Playspage from '../components/Plays/Playspage';
+import Podcasts from '../components/Podcasts/Podcasts';
+import Categories from '../components/Categories/Categories';
+import LibraryContent from '../components/ArtistLibrary/LibraryContent';
 
 function HomeScreen() {
   return (
@@ -42,6 +46,13 @@ function StackNavigation() {
         <Stack.Screen name="Setting" component={Setting} />
         <Stack.Screen name="Language" component={Language} />
         <Stack.Screen name="playlist" component={Musicalbum} />
+        <Stack.Screen name="play" component={Playspage} />
+        <Stack.Screen name="podcasts" component={Podcasts} />
+        <Stack.Screen name="Categories" component={Categories} />
+        <Stack.Screen name="Library" component={LibraryContent} options={{
+          // headerShown:false
+          title:""
+        }}/>
       </Stack.Navigator>
     // </NavigationContainer>
   );

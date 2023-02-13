@@ -7,14 +7,14 @@ const Rechentplaylist = () => {
       <View style={styles.wrapper}>
         <TouchableOpacity style={styles.playlistdesc}>
         <Image
-        source={{uri:"https://source.unsplash.com/featured/300x205"}}
+        source={{uri:"https://i.scdn.co/image/ab6761610000e5ebeba97bff36c4ae81e94333d8"}}
         style={styles.playlistImage}
         />
         <Text style={styles.title}>Mame Khan</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.playlistdesc}>
         <Image
-        source={{uri:"https://source.unsplash.com/featured/300x202"}}
+        source={{uri:"https://nettv4u.com/fileman/Uploads/Top-20-Singers-Who-Rule-Bollywood/Udit_Narayan.jpg"}}
         style={styles.playlistImage}
         />
         <Text style={styles.title} >Udit Narayan</Text>
@@ -24,14 +24,14 @@ const Rechentplaylist = () => {
       <View style={styles.wrapper}>
         <TouchableOpacity style={styles.playlistdesc}>
         <Image
-        source={{uri:"https://source.unsplash.com/featured/300x201"}}
+        source={{uri:"https://freekaamaal.com/blog/wp-content/uploads/2021/06/sh.jpg"}}
         style={styles.playlistImage}
         />
         <Text style={styles.title}>Sherya Ghosal</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.playlistdesc}>
         <Image
-        source={{uri:"https://source.unsplash.com/featured/300x203"}}
+        source={{uri:"https://ecdn.thelistacademy.com/wp-content/uploads/2019/05/Arijit_Singh_in__Ebela_Ami_Amar_Moto_Samman_Award_2013_.jpg"}}
         style={styles.playlistImage}
         />
         <Text style={styles.title} >Arijit Singh</Text>
@@ -41,14 +41,14 @@ const Rechentplaylist = () => {
       <View style={styles.wrapper}>
         <TouchableOpacity style={styles.playlistdesc}>
         <Image
-        source={{uri:"https://source.unsplash.com/featured/300x204"}}
+        source={{uri:"https://nettv4u.com/fileman/Uploads/Top%2010%20Singers%20of%20the%20Bollywood%20with%20Initial%20%E2%80%9CS%E2%80%9D/shaan.png"}}
         style={styles.playlistImage}
         />
         <Text style={styles.title}>Shaan</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.playlistdesc}>
         <Image
-        source={{uri:"https://source.unsplash.com/featured/300x207"}}
+        source={{uri:"https://www.rotarybombayseacoast.org/wp-content/uploads/2022/03/Kumar-Sanu.jpg"}}
         style={styles.playlistImage}
         />
         <Text style={styles.title} >Kumar Sanu</Text>

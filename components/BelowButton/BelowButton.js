@@ -1,13 +1,15 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 
 const BelowButton = () => {
+  const navigation = useNavigation();
   return (
     <View  style={styles.container}>
-      <TouchableOpacity style={styles.buttonwraper}>
+      <TouchableOpacity style={styles.buttonwraper} onPress={() => navigation.navigate("play")}>
         <Text style={styles.title}> Music </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonwraper}>
+      <TouchableOpacity style={styles.buttonwraper} onPress={() => navigation.navigate("podcasts")}>
         <Text style={styles.title}> Prodcast & Shows </Text>
       </TouchableOpacity>
     </View>

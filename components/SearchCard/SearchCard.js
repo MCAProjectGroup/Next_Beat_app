@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View,TouchableOpacity,Image, FlatList } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 import Searchitem from './Searchitem'
 
 const ListData = [
@@ -101,10 +102,12 @@ const ListData = [
 ]
 
 const SearchCard = () => {
+  const navigation = useNavigation();
   return (
     
-    <View style={styles.wrapper}>
+    <View style={styles.wrapper} >
       <FlatList
+      onPress={() => navigation.navigate("Categories")}
         numColumns={2}
         keyExtractor={(item, index)=> index+"asdas"}
         data={ListData}

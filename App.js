@@ -2,18 +2,20 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useLayoutEffect, useState} from 'react';
 // import Login from './components/Login/Login'
 import axios from 'axios';
-import Notificationpage from './components/Notificationpage/Notificationpage';
+
 import BottomTabNavigation from './Navigtion/BottomTabNavigation';
 import SplashScreen from 'react-native-splash-screen';
-import Recentlypage from './components/Recentlypage/Recentlypage';
+
 import TrackPlayer, {
   AppKilledPlaybackBehavior,
   Capability,
 } from 'react-native-track-player';
 import notifee, {AndroidStyle} from '@notifee/react-native';
 import {setupPlayer, addTracks} from './service';
-import Musicalbum from './components/MusicAlbum/Musicalbum';
+
 import messaging from '@react-native-firebase/messaging';
+
+import LibraryContent from './components/ArtistLibrary/LibraryContent';
 
 const App = () => {
   const [IsPlayerReady, setIsPlayerReady] = useState(false);
@@ -57,7 +59,7 @@ const App = () => {
         artist: 'Jubin Nautiyal, Asees Kaur',
         artwork:
           'https://www.pagalworld.com.se/siteuploads/thumb/sft7/3198_4.jpg',
-        duration: 174,
+        duration: 230,
       },
       {
         id: 'trackId2',
@@ -66,7 +68,34 @@ const App = () => {
         artist: 'Neha Kakkar, Rohanpreet Singh',
         artwork:
           'https://www.pagalworld.com.se/siteuploads/thumb/sft128/63993_4.jpg',
-        duration: 174,
+        duration: 227,
+      },
+      {
+        id: 'trackId3',
+        url: require('./song3.mp3'),
+        title: 'Dhokha',
+        artist: 'Arijit Singh',
+        artwork:
+          'https://www.pagalworld.com.se/siteuploads/thumb/sft11/5054_4.jpg',
+        duration: 245,
+      },
+      {
+        id: 'trackId4',
+        url: require('./song4.mp3'),
+        title: 'Meri Zindagi Hai Tu',
+        artist: 'Jubin Nautiyal, Neeti Mohan',
+        artwork:
+          'https://www.pagalworld.com.se/siteuploads/thumb/sft9/4203_4.jpg',
+        duration: 219,
+      },
+      {
+        id: 'trackId5',
+        url: require('./song5.mp3'),
+        title: 'Pyaar Karte Ho Na',
+        artist: '	Stebin Ben, Shreya Ghoshal',
+        artwork:
+          'https://www.pagalworld.com.se/siteuploads/thumb/sft9/4477_4.jpg',
+        duration: 191,
       },
     ]);
 
@@ -75,16 +104,15 @@ const App = () => {
   };
   // }
 
-  const initialize=async()=>{
+  const initialize = async () => {
     const token = await messaging().getToken();
     console.log({token});
-
-  }
+  };
 
   useEffect(() => {
     start();
     SplashScreen.hide();
-    initialize()
+    initialize();
   }, []);
 
   useEffect(() => {
@@ -143,7 +171,7 @@ const App = () => {
   // return null;
   return (
     <View style={styles.wrapper}>
-      {/* <Musicalbum/> */}
+      {/* <LibraryContent /> */}
       <BottomTabNavigation />
     </View>
 
