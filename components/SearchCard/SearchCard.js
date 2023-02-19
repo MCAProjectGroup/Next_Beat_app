@@ -107,7 +107,8 @@ const SearchCard = () => {
     
     <View style={styles.wrapper} >
       <FlatList
-      onPress={() => navigation.navigate("Categories")}
+      // onPress={() => navigation.navigate("Categories")}
+      // onPress
         numColumns={2}
         keyExtractor={(item, index)=> index+"asdas"}
         data={ListData}

@@ -1,73 +1,116 @@
-import {StyleSheet, Text, View, TextInput} from 'react-native';
-import React, {useState} from 'react';
-import {Picker} from '@react-native-picker/picker';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 
 const Signpage = () => {
-  const [genderValue, setGenderValue] = useState('');
-
+  const navigation=useNavigation();
   return (
-    <>
-      <View style={styles.container}>
-        <Text style={styles.title}>What's your Phone no.?</Text>
-        <TextInput style={styles.input} keyboardType="numeric" />
-        <Text style={styles.title}>What's your name?</Text>
-        <TextInput style={styles.input} />
-        <Text style={styles.title}>What's your date of birth?</Text>
-        <TextInput style={styles.input} />
-        <Text style={styles.title}>What's your gender?</Text>
-        <Picker
-          style={styles.input}
-          selectedValue={genderValue}
-          onValueChange={(itemValue, itemIndex) => setGenderValue(itemValue)}>
-          <Picker.Item label="Female" value="female" />
-          <Picker.Item label="Male" value="male" />
-          <Picker.Item label="Others" value="others" />
-        </Picker>
-      </View>
+    <View style={styles.container}>
+      <View style={{alignItems: 'center',flex:1, width:"100%"}}>
+        <View style={{flex:1, justifyContent:"center", alignItems:"center",width:"100%"}}>
+      <Text style={[styles.title]}> Get Started </Text>
 
-      <View style={styles.Buttonwrapper}>
-        <Text style={styles.Buttontitle}>Sign Up</Text>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.inputText}
+              placeholder="Name"
+              placeholderTextColor="#fff"
+              onChangeText={text => setState({email: text})}
+            />
+          </View>
+
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.inputText}
+              placeholder="Email Address"
+              placeholderTextColor="#fff"
+              onChangeText={text => setState({email: text})}
+            />
+          </View>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.inputText}
+              secureTextEntry
+              placeholder="Password"
+              placeholderTextColor="#fff"
+              onChangeText={text => setState({password: text})}
+            />
+          </View>
+
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.inputText}
+              secureTextEntry
+              placeholder="Confirm password"
+              placeholderTextColor="#fff"
+              onChangeText={text => setState({password: text})}
+            />
+          </View>
+
+          <TouchableOpacity style={styles.loginBtn}>
+            <Text style={{fontWeight: 'bold',fontSize:18}}> SIGN UP </Text>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity style={{marginBottom:20}} onPress={()=>navigation.navigate('Login')}>
+          <Text style={styles.forgotAndSignUpText}>
+            Already registered?{' '}
+            <Text style={{color: '#fff', fontSize: 18, fontWeight: 'bold'}}>
+              Sign In
+            </Text>
+          </Text>
+        </TouchableOpacity>
       </View>
-    </>
+    </View>
   );
 };
-
-export default Signpage;
-
 const styles = StyleSheet.create({
   container: {
-    flex:1,
-    padding: 10,
-    marginTop: 30,
+    flex: 1,
+    // alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
-    color: '#fff',
     fontWeight: 'bold',
-    fontSize: 25,
-    lineHeight: 50,
-    marginTop: 15,
-  },
-  input: {
-    backgroundColor: '#717171',
-    fontSize: 20,
+    fontSize: 50,
     color: '#fff',
-    borderRadius: 5,
-    paddingLeft: 15,
+    marginBottom: 60,
+    marginLeft: 30,
+    width:"100%"
   },
-  Buttonwrapper: {
-    padding: 10,
+  inputView: {
+    width: '80%',
+    backgroundColor: '#696969',
+    borderRadius: 25,
+    height: 50,
+    marginBottom: 20,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  inputText: {
+    height: 50,
+    color: '#fff',
+  },
+  forgotAndSignUpText: {
+    color: '#fff',
+    fontSize: 15,
+  },
+  loginBtn: {
+    width: '80%',
+    backgroundColor: '#1dd761',
+    borderRadius: 25,
+    height: 50,
     alignItems: 'center',
-    justifyContent: 'space-around',
-    backgroundColor: '#fff',
-    borderRadius: 50,
-    height: 60,
-    width: 150,
-    margin: 50,
-    marginHorizontal: 120,
-  },
-  Buttontitle: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: '#121212',
+    justifyContent: 'center',
+    marginTop: 40,
+    marginBottom: 10,
   },
 });
+
+export default Signpage;

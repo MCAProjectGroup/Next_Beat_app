@@ -29,7 +29,7 @@ const Welcome = () => {
         <View style={styles.containertitle}>
           <MCI name="music" size={50} color="#fff" />
           <Text style={styles.title}>Millions of Songs. </Text>
-          <Text style={styles.title}>Free on Spotify. </Text>
+          <Text style={styles.title}>Free on Musify. </Text>
         </View>
 
         <View style={styles.containerButton}>
@@ -42,6 +42,7 @@ const Welcome = () => {
             SocialLogin.map((item, index)=>(
               <Button
                 key={item+"SocialLogin"+index}
+                
                 title={"Continue With "+item.title}
                 icon={<MCI name={item.icon} size={24} color="#fff" />}
               />
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 35,
     lineHeight: 50,
+    // flex:1
   },
   containerButton: {
     flex: 1,
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#65d46e',
   },
   signupButton: {
-    color: '#121212',
+    color: '#171926',
     fontWeight: 'bold',
     fontSize: 16,
     marginHorizontal: 20,
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
-    backgroundColor: '#121212',
+    backgroundColor: '#171926',
     alignItems:'center',
     justifyContent:'center'
        

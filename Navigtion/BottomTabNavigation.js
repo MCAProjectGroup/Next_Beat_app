@@ -13,6 +13,7 @@ import Header from '../components/Header/Header';
 import StackNavigation from './StackNavigation';
 import { TabBarOptions } from '../static';
 import BottomTabDesign from './BottomTabDesign';
+import Setting from '../components/Setting/Setting';
 // import Header from '../Header/Header';
 
 
@@ -20,7 +21,12 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabNavigation = () => {
   return (
-      <NavigationContainer theme={DarkTheme}>
+      <NavigationContainer theme={{
+        ...DarkTheme,
+        colors:{
+          background:"#171926"
+        }
+        }}>
       <Tab.Navigator  initialRouteName='Home'
       screenOptions={{
         tabBarStyle:{
@@ -68,7 +74,7 @@ const BottomTabNavigation = () => {
         )
       }} 
       />
-      <Tab.Screen name="Premium" component={Premium}
+      <Tab.Screen name="Setting" component={Setting}
        options={{ headerShown:false,
         tabBarIcon:({color}) =>( 
             <MCI name="spotify" size={25} color={color} />

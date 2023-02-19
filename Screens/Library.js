@@ -34,7 +34,7 @@ export default Library;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
+    backgroundColor: '#171926',
     paddingTop: 40,
   },
   textwrapper: {
