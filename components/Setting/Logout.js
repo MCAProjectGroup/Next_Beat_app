@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
+import BottomDemo from './BottomDemo'
 
 const Logout = () => {
   return (
@@ -13,7 +14,7 @@ const Logout = () => {
   )
 }
 
-export default Logout
+export default BottomDemo(Logout)
 
 const styles = StyleSheet.create({
     container:{

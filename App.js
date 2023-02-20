@@ -22,6 +22,7 @@ import messaging from '@react-native-firebase/messaging';
 import AuthNavigation from './Navigtion/AuthNavigation';
 import {useSelector} from 'react-redux';
 import BottomDemo from './components/Setting/BottomDemo';
+import Logout from './components/Setting/Logout';
 
 
 
@@ -235,10 +236,10 @@ const App = () => {
   // return null;
   return (
     <View style={styles.wrapper}>
-      {/* {auth.token ? <BottomTabNavigation /> : <AuthNavigation />} */}
+      {auth.token ? <BottomTabNavigation /> : <AuthNavigation />}
       {/* <Profilepage/> */}
       {/* <Language/> */}
-      <BottomDemo/>
+      {/* <Logout /> */}
       
      
     </View>

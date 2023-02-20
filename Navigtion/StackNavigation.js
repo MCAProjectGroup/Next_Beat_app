@@ -18,6 +18,7 @@ import LibraryContent from '../components/ArtistLibrary/LibraryContent';
 import Premium from '../Screens/Premium';
 import Forgetpassword from '../components/ForgetPassword/Forgetpassword';
 import Help from '../components/Setting/Help';
+import Profilepage from '../components/Setting/Profilepage';
 
 function HomeScreen() {
   return (
@@ -73,6 +74,9 @@ function StackNavigation() {
         }}/>
          <Stack.Screen name="Help" component={Help} options={{
           title:"Help & Support"
+        }} />
+        <Stack.Screen name="Profilepage" component={Profilepage} options={{
+          title:"My Profile"
         }} />
       </Stack.Navigator>
     // </NavigationContainer>
