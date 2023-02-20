@@ -21,10 +21,10 @@ import messaging from '@react-native-firebase/messaging';
 
 import AuthNavigation from './Navigtion/AuthNavigation';
 import {useSelector} from 'react-redux';
-import Resetotp from './components/ForgetPassword/Resetotp';
-import Profile from './components/Setting/Profile';
-import Setting from './components/Setting/Setting';
-// import OTPVerify from './components/OTPVerify';
+import BottomDemo from './components/Setting/BottomDemo';
+
+
+
 
 export const trackList = [
   {
@@ -235,9 +235,12 @@ const App = () => {
   // return null;
   return (
     <View style={styles.wrapper}>
-      {auth.token ? <BottomTabNavigation /> : <AuthNavigation />}
-      {/* <OTPVerify/> */}
-      {/* <Setting/> */}
+      {/* {auth.token ? <BottomTabNavigation /> : <AuthNavigation />} */}
+      {/* <Profilepage/> */}
+      {/* <Language/> */}
+      <BottomDemo/>
+      
+     
     </View>
   );
 };

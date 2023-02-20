@@ -31,11 +31,7 @@ const BottomTabNavigation = () => {
       screenOptions={{
         tabBarStyle:{
         
-          
-          
         },
-        
-
         tabBarInactiveTintColor:"grey",
         tabBarActiveTintColor:"#fff"
       }}

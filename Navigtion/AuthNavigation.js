@@ -59,7 +59,7 @@ function AuthNavigation() {
             title: 'Forget Password',
           }}
           component={Forgetpassword}
-        />.
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

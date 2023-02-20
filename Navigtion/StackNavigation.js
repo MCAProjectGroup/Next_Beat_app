@@ -17,6 +17,7 @@ import Categories from '../components/Categories/Categories';
 import LibraryContent from '../components/ArtistLibrary/LibraryContent';
 import Premium from '../Screens/Premium';
 import Forgetpassword from '../components/ForgetPassword/Forgetpassword';
+import Help from '../components/Setting/Help';
 
 function HomeScreen() {
   return (
@@ -70,6 +71,9 @@ function StackNavigation() {
           // headerShown:false
           title:""
         }}/>
+         <Stack.Screen name="Help" component={Help} options={{
+          title:"Help & Support"
+        }} />
       </Stack.Navigator>
     // </NavigationContainer>
   );
