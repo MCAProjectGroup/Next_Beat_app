@@ -1,7 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import SelectQuality from './SelectQuality';
-import BottomDemo from './BottomDemo';
 
 const Quality = () => {
   return (
@@ -19,12 +18,12 @@ const Quality = () => {
   );
 };
 
-export default BottomDemo(Quality);
+export default Quality;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // marginTop: 10,
+    marginTop: 30,
     marginHorizontal: 20,
   },
 });

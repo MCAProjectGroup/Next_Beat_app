@@ -21,10 +21,10 @@ const Header = () => {
         <ScrollView>
           <View style={styles.textwrapper}>
             {/* <Touch */}
-            <TouchableOpacity onPress={()=>navigation.navigate("premium")} style={{ backgroundColor:'#1dd761', borderRadius:20}}>
-            <View style={{flexDirection:"row",alignItems:'center', paddingHorizontal:16,}}>
-              <Image source={{uri:"https://iconsplace.com/wp-content/uploads/_icons/800080/256/png/music-icon-13-256.png"}}
-              style={{height:30,width:30,resizeMode:'contain',
+            <TouchableOpacity onPress={()=>navigation.navigate("premium")} style={{backgroundColor:'#1dd761',borderRadius:10}}>
+            <View style={{flexDirection:"row",alignItems:'center', paddingHorizontal:16,borderRadius:20,}}>
+              <Image source={{uri:"https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/spotify-512.png"}}
+              style={{height:30,width:30,resizeMode:'contain',borderRadius:20
 
               }}
       
@@ -56,14 +56,9 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
-    // flex:1,
-    // height:50,
-    // height: '100%',
     minHeight:60,
     marginTop:20,
     marginBottom:14,
-    // width: '100%',
-    // alignItems: 'center',
     backgroundColor: '#171926',
     paddingHorizontal: 16,
     paddingVertical:10
@@ -76,11 +71,8 @@ const styles = StyleSheet.create({
   title: {
     color: '#000',
     fontWeight: '500',
-    fontSize: 18,
-    // flex: 1,
-    // paddingHorizontal:14, 
+    fontSize: 24, 
     paddingVertical:8,
-    // borderRadius:40,
-    // backgroundColor:"#1dd761"
+    
   },
 });

@@ -3,7 +3,7 @@ import React from 'react';
 import SelectQuality from './SelectQuality';
 import BottomDemo from './BottomDemo';
 
-const Quality = () => {
+const Stream = () => {
   return (
     <View style={styles.container}>
       <View style={{alignItems: 'center', marginBottom: 30}}>
@@ -11,20 +11,21 @@ const Quality = () => {
           Select Download Quality
         </Text>
       </View>
+      <SelectQuality qualitytext="Auto" />
       <SelectQuality qualitytext="HD" subqualitytext="320/256 kbps" />
       <SelectQuality qualitytext="High" subqualitytext="128 kbps" />
       <SelectQuality qualitytext="Medium" subqualitytext="64 kbps" />
       <SelectQuality qualitytext="Low" subqualitytext="32 kbps" />
     </View>
-  );
-};
+  )
+}
 
-export default BottomDemo(Quality);
+export default BottomDemo(Stream)
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // marginTop: 10,
-    marginHorizontal: 20,
-  },
-});
+    container: {
+      flex: 1,
+    //   marginTop: 10,
+      marginHorizontal: 20,
+    },
+  });

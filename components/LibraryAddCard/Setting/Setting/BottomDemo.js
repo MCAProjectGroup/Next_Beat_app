@@ -23,7 +23,7 @@ const BottomDemo = (Component) => {
     }, []);
 
     // variables
-    const snapPoints = useMemo(() => [100, 200], []);
+    const snapPoints = useMemo(() => [200, 400], []);
 
     // callbacks
     const handlePresentModalPress = useCallback(() => {
@@ -65,10 +65,10 @@ const BottomDemo = (Component) => {
           enablePanDownToClose
           enableHandlePanningGesture
           backgroundStyle={{
-            backgroundColor:"#171926"
+            // backgroundColor:"#000"
           }}
 
-          snapPoints={props.snapPoints}
+          snapPoints={snapPoints}
           onChange={handleSheetChanges}
           onDismiss={handleDismissPress}
         >
@@ -94,13 +94,12 @@ const styles = StyleSheet.create({
       // flex: 1,
       padding: 15,
       // marginBottom:200,
-      backgroundColor:"#171926",
       justifyContent: 'center',
       // backgroundColor: 'transparent',
     },
     contentContainer: {
       flex: 1,
       // alignItems: 'center',
-      backgroundColor:"#171926"
+      backgroundColor:"#000"
     },
   });
