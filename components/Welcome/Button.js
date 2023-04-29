@@ -1,14 +1,20 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { LoginSuccessfully } from '../../store/auth';
 
 
 
 const Button = (props) => {
+  const dispatch = useDispatch();
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <View>
+    <TouchableOpacity style={styles.container} onPress={()=>dispatch(LoginSuccessfully("this is test token"))}>
         <View >{props.icon}</View>
       <Text style={styles.title}>{props.title}</Text>
     </TouchableOpacity>
+    </View>
   )
 }
 
@@ -16,7 +22,6 @@ export default Button
 
 const styles = StyleSheet.create({
     container:{
-        flex:1,
         padding:12,
         borderRadius:50,
         alignItems:'center',

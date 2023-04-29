@@ -1,68 +1,39 @@
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, Text, View,TouchableOpacity} from 'react-native';
 import React from 'react';
-import LangugeNames from './LangugeNames';
+import SelectQuality from './SelectQuality';
+import BottomDemo from './BottomDemo';
 
-const ListData = [
-  {
-    title: 'Bengali',
-  },
-  {
-    title: 'Gujrai',
-  },
-  {
-    title: 'Hindi',
-  },
-  {
-    title: 'internation',
-  },
-  {
-    title: 'Kannada',
-  },
-  {
-    title: 'Malaylam',
-  },
-  {
-    title: 'marathi',
-  },
-  {
-    title: 'Panjabi',
-  },
-  {
-    title: 'Tamil',
-  },
-  {
-    title: 'Telgu',
-  },
-];
+
 
 const Language = () => {
   return (
-    <View style={styles.container} >
-      <Text style={styles.title}>
-        What are your prefferd langauge for music?
-      </Text>
-      <View style={{marginTop: 50}}>
-        <FlatList
-          keyExtractor={(item, index) => index}
-          data={ListData}
-          ListHeaderComponent={() => <View />}
-          renderItem={({item}) => <LangugeNames title={item.title} />}
-        />
+    <View style={styles.container}>
+      <View style={{alignItems: 'center', marginBottom: 30}}>
+        <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 24}}>
+          Select Music Language(s)
+        </Text>
       </View>
+      <SelectQuality qualitytext="Hindi" />
+      <SelectQuality qualitytext="English" />
+      <SelectQuality qualitytext="Bengali" />
+      <SelectQuality qualitytext="Panjabi" />
+      <SelectQuality qualitytext="Telugu" />
+      <SelectQuality qualitytext="Tamil" />
+      <SelectQuality qualitytext="Marathi" />
+      <SelectQuality qualitytext="Rajjasthani" />
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Done</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
-export default Language;
+export default BottomDemo(Language);
 
 const styles = StyleSheet.create({
   container: {
-    // marginBottom: 50,
-    paddingTop:20,
-    marginHorizontal:15
-  },
-  title: {
-    color: '#fff',
-    fontSize:18
+    flex: 1,
+    // marginTop: 30,
+    marginHorizontal: 20,
   },
 });

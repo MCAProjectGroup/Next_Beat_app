@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <View style={{flex: 1, paddingHorizontal: 15}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <BelowButton />
+        {/* <BelowButton /> */}
         <Rechentplaylist />
         <View>
           <Albums title="Chart's mix" />

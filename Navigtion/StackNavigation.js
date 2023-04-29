@@ -11,6 +11,14 @@ import Header from '../components/Header/Header';
 import Setting from '../components/Setting/Setting';
 import Language from '../components/Setting/Language';
 import Musicalbum from '../components/MusicAlbum/Musicalbum';
+import Playspage from '../components/Plays/Playspage';
+import Podcasts from '../components/Podcasts/Podcasts';
+import Categories from '../components/Categories/Categories';
+import LibraryContent from '../components/ArtistLibrary/LibraryContent';
+import Premium from '../Screens/Premium';
+import Forgetpassword from '../components/ForgetPassword/Forgetpassword';
+import Help from '../components/Setting/Help';
+import Profilepage from '../components/Setting/Profilepage';
 
 function HomeScreen() {
   return (
@@ -25,23 +33,51 @@ const Stack = createNativeStackNavigator();
 function StackNavigation() {
   return (
     // <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator 
+      
+      screenOptions={{
+        headerStyle:{
+          backgroundColor: "#171926",
+
+        },
+        headerTitleStyle:{
+          color:"#fff"
+        },
+        title:"",
+        headerTintColor:"#fff"
+      }}
+      >
         <Stack.Screen name="Home" 
         options={{
             header:()=>(
          
-          <View style={{height:60, backgroundColor:"red"}}>
+          <View style={{}}>
               <Header />
           </View>
         ),
        
           }}
         component={Home} />
-        <Stack.Screen name="Notification" component={Notificationpage} />
+        <Stack.Screen name="Notification" component={Notificationpage}  options={{headerShown:true, title:"" }} />
         <Stack.Screen name="Recentplay" component={Recentlypage} />
-        <Stack.Screen name="Setting" component={Setting} />
         <Stack.Screen name="Language" component={Language} />
         <Stack.Screen name="playlist" component={Musicalbum} />
+        <Stack.Screen name="play" component={Playspage} />
+        <Stack.Screen name="podcasts" component={Podcasts} />
+        <Stack.Screen name="Categories" component={Categories} />
+        <Stack.Screen name="premium" component={Premium} options={{
+          title:"Best Offer For You"
+        }} />
+        <Stack.Screen name="Library" component={LibraryContent} options={{
+          // headerShown:false
+          title:""
+        }}/>
+         <Stack.Screen name="Help" component={Help} options={{
+          title:"Help & Support"
+        }} />
+        <Stack.Screen name="Profilepage" component={Profilepage} options={{
+          title:"My Profile"
+        }} />
       </Stack.Navigator>
     // </NavigationContainer>
   );

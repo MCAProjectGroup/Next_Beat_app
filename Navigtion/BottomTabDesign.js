@@ -59,9 +59,9 @@ const BottomTabDesign = (props) => {
 
     return (
         <View style={{
-            minHeight: 65,
+            minHeight: 80,
             paddingTop: 10,
-            backgroundColor: "#040404",
+            backgroundColor: "#171926",
             borderTopWidth: 0,
             elevation: 5
 
@@ -76,10 +76,10 @@ const BottomTabDesign = (props) => {
 
                 </View>
                 <TouchableOpacity onPress={handlePlayPress} style={{justifyContent:"center", marginRight:16}}>
-                    <MCI name={playerState == State.Playing ? 'pause' : 'play'} size={20} color={"#ff0066"} />
+                    <MCI name={playerState == State.Playing ? 'pause' : 'play'} size={20} color={"#1dd761"} />
                 </TouchableOpacity>
             </TouchableOpacity>
-            <View style={{ width: "100%", height: 1, backgroundColor: "grey", marginVertical: 4 }} />
+            <View style={{ width: "100%", height: 1, backgroundColor: "grey", marginVertical: 6 }} />
             <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
                 {
                     TabBarOptions.map((item) => (
@@ -88,7 +88,7 @@ const BottomTabDesign = (props) => {
                             setCurrent(item.path)
                         }} style={{ flex: 1, alignItems: "center" }}>
                             <item.Icon color={item.path === Current ? "#fff" : "grey"} />
-                            <Text style={{ color: item.path === Current ? "#fff" : "grey", }}>{item.name}</Text>
+                            <Text style={{ color: item.path === Current ? "#fff" : "grey", marginVertical:4, fontSize:12 }}>{item.name}</Text>
                         </TouchableOpacity>
                         //    <item.icon />
                     ))

@@ -7,7 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 const FloatingMusicPlayer = () => {
     const [liked,setLiked] = useState(false)
   return (
-    <View style={{backgroundColor:"#121212", flex:1, justifyContent:"flex-end"}}>
+    <View style={{backgroundColor:"#171926", flex:1, justifyContent:"flex-end"}}>
 
         <View style={styles.container}>
         <Image

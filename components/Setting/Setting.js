@@ -5,107 +5,149 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import React, {useCallback, useState} from 'react';
 import Profile from './Profile';
-import Settingcontent from './Settingcontent';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import Settingcontentdata from './Settingcontentdata';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+import MusicSetting from './MusicSetting';
+import Logout from './Logout';
+import Quality from './Quality';
+import {
+  // BottomSheetModal,
+  BottomSheetModalProvider,
+  // useBottomSheetModal
+} from '@gorhom/bottom-sheet';
+import Language from './Language';
+import BehaviourList from './BehaviourList'
+import Stream from './Stream';
 
 const Setting = () => {
   const navigation = useNavigation();
+  const [ShowBottomSheet, setShowBottomSheet] = useState({
+    status: false,
+    Component: Logout,
+    snapPoints: [100, 200],
+  });
+
+  const _SheetClose = useCallback(() => {
+    console.log('closed');
+    setShowBottomSheet({
+      ...ShowBottomSheet,
+      status: false,
+    });
+  }, []);
+
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Free account</Text>
-      <TouchableOpacity style={styles.buttoncontainer}>
-        <Text style={styles.button}> Go Premium </Text>
-      </TouchableOpacity>
-      <View style={styles.profile_details}>
-        <View style={styles.profilecontainer}>
-          <Profile title="Anku Pathak" />
-        </View>
-        <TouchableOpacity>
-          <AntDesign
-            name="right"
-            size={15}
-            color="#fff"
-            style={{flexDirection: 'row'}}
+    <View style={{flex: 1}}>
+      <BottomSheetModalProvider>
+        <ScrollView>
+          <View style={styles.container}>
+            {/* UPPER CONTAINER TEXT */}
+  
+            <View style={{alignItems: 'center', flexDirection: 'row'}}>
+              <AntDesign name="left" color={'#fff'} size={20} />
+              <Text style={{color: '#fff', fontSize: 32, fontWeight: 'bold'}}>
+                {' '}
+                Settings{' '}
+              </Text>
+            </View>
+            {/* PROFILE TEXT */}
+            <Profile />
+
+            {/* SETTING WITH ARROW */}
+            <View style={{marginTop:20,marginLeft:10}}>
+            <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 20}}>
+              Music Listening Preferences
+            </Text>
+            <MusicSetting
+              title="Music Language(s)"
+              onPress={() =>
+                setShowBottomSheet({
+                  status: true,
+                  Component: Language,
+                  snapPoints: [100, 530],
+                })
+              }
+            />
+            <MusicSetting title="On Click Behaviour-List"  onPress={() =>
+                setShowBottomSheet({
+                  status: true,
+                  Component:BehaviourList,
+                  snapPoints: [100, 280],
+                })
+              }/>
+            <MusicSetting title="Streaming Quality"   onPress={() =>
+                setShowBottomSheet({
+                  status: true,
+                  Component:Stream,
+                  snapPoints: [100, 380],
+                })
+              }/>
+            </View>
+
+            {/* SWITCH BUTTON */}
+            <Settingcontentdata
+              stitle={'Offline Songs On slow Internet'}
+              ssubtitle={'Play downloaded and mp3 songs only'}
+            />
+            <Settingcontentdata
+              stitle={'Allow explict content'}
+              ssubtitle={
+                'Turn off to skip explict content Explict content is labeled with E tag'
+              }
+            />
+            <Settingcontentdata stitle={'Sleep Timer'} />
+            <Settingcontentdata stitle={'Show Lyrics on player'} />
+
+            {/* CONTENT WITH ARROW */}
+            <View style={{marginTop: 40, marginLeft: 10}}>
+              <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 20}}>
+                Offline Music Preferences
+              </Text>
+              <MusicSetting
+                title="Download Quality"
+                onPress={() =>
+                  setShowBottomSheet({
+                    status: true,
+                    Component: Quality,
+                    snapPoints: [100, 320],
+                  })
+                }
+              />
+            </View>
+            {/* CONTENT WITH ARROW  AND PROFILE DEAILS*/}
+            <View style={{marginTop: 40, marginLeft: 10}}>
+              <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 20}}>
+                Profile
+              </Text>
+              <MusicSetting title="My Profile" path={'Profilepage'} />
+              <MusicSetting title="Help & Support" path={'Help'} />
+              <MusicSetting
+                title="Logout"
+                onPress={() =>
+                  setShowBottomSheet({
+                    status: true,
+                    Component: Logout,
+                    snapPoints: [100, 200],
+                  })
+                }
+              />
+            </View>
+          </View>
+        </ScrollView>
+        {/* <View style={[StyleSheet.absoluteFill,{backgroundColor:"transparent"}]}> */}
+        {ShowBottomSheet.status && (
+          <ShowBottomSheet.Component
+            snapPoints={ShowBottomSheet.snapPoints}
+            show={ShowBottomSheet.status}
+            onClose={_SheetClose}
           />
-        </TouchableOpacity>
-      </View>
-      <View style={{marginTop: 10}}>
-        <Settingcontent text={'Data Server'} />
-        <Settingcontentdata
-          stitle={'Audio Quality'}
-          ssubtitle={
-            'Sets Your audio quality to low (equivalent to 24kbit/sec) and disable artist canvases'
-          }
-        />
-        <Settingcontent text={'Video podcasts'} />
-        <Settingcontentdata
-          stitle={'Download audio only'}
-          ssubtitle={'save video podcasts as audio only'}
-        />
-        <Settingcontentdata
-          stitle={'Stream audio only'}
-          ssubtitle={'Play video podcasts as audio only when not wifi'}
-        />
-        <Settingcontent text={'Playback'} />
+        )}
 
-        <Settingcontentdata
-          stitle={'Gapless'}
-          ssubtitle={'Allow gapless playback'}
-        />
-        <Settingcontentdata
-          stitle={'Automix'}
-          ssubtitle={
-            'Allow seamless transition between songs on select playlists.'
-          }
-        />
-        <Settingcontentdata
-          stitle={'Allow Explicit Content'}
-          ssubtitle={
-            'Turn on to play explict content Explicit content is labeled with Etag.'
-          }
-        />
-
-        <Settingcontentdata
-          stitle={'Shows unplayable songs'}
-          ssubtitle={'shows songs that are unplayable.'}
-        />
-        <Settingcontentdata
-          stitle={'Normalize volume'}
-          ssubtitle={'Sets the same volume leval for all tracks.'}
-        />
-        <Settingcontentdata
-          stitle={'Mono Audio'}
-          ssubtitle={'Makes the left and right speakers play the same audio.'}
-        />
-        <Settingcontentdata
-          stitle={'Device Brodcast Status'}
-          ssubtitle={
-            'Allow other apps on your device to see what you are listing to.'
-          }
-        />
-        <Settingcontentdata
-          stitle={'Autoplay'}
-          ssubtitle={
-            "Enjoy nonstop lisening. When your audio ends, we'll play you somethings similar."
-          }
-        />
-        <Settingcontentdata
-          stitle={'Canvas'}
-          ssubtitle={'Display short, looping visuals on tracks.'}
-        />
-        <Settingcontent text={'Languages'} />
-      </View>
-      <TouchableOpacity style={styles.langcontainer} onPress={() => navigation.navigate("Language")}>
-        <Text style={styles.langtitle}>Languages</Text>
-        <Text style={styles.langsubtitle}>
-          Choose your preferred languges for music.
-        </Text>
-      </TouchableOpacity>
-    </ScrollView>
+        {/* </View> */}
+      </BottomSheetModalProvider>
+    </View>
   );
 };
 
@@ -114,47 +156,8 @@ export default Setting;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: 'tomato',
-    paddingTop: 30,
-    paddingHorizontal: 10,
-    // marginBottom:200
-  },
-  title: {
-    color: '#fff',
-    fontSize: 25,
-    textAlign: 'center',
-    fontWeight: '600',
-  },
-  buttoncontainer: {
-    marginTop: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    color: '#333',
-    backgroundColor: 'white',
-    borderRadius: 999,
-    width: 170,
-    fontWeight: '500',
-    fontSize: 20,
-    textAlign: 'center',
-    padding: 10,
-  },
-  profile_details: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  langcontainer: {
-    marginBottom: 60,
-    
-  },
-  langtitle: {
-    fontSize: 20,
-    marginTop: 20,
-    color: '#fff',
-  },
-  langsubtitle: {
-    color: 'grey',
+    marginHorizontal: 12,
+    marginTop: 30,
+    marginBottom: 50,
   },
 });

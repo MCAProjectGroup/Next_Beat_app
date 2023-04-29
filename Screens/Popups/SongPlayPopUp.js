@@ -5,7 +5,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
 import Slider from '@react-native-community/slider';
 import { SongManagerOptions } from '../../static'
-import { State, usePlaybackState,useProgress } from 'react-native-track-player'
+import TrackPlayer, { State, usePlaybackState,useProgress } from 'react-native-track-player'
 
 function pad(n, width, z = 0) {
     n = n + '';
@@ -82,7 +82,11 @@ const SongPlayPopUp = (props) => {
                             minimumValue={0}
                             maximumValue={progress.duration}
                             // step={1}
-                            
+                            onSlidingComplete={(data)=>{
+                                console.log({data});
+                                TrackPlayer.seekTo(parseInt(data))
+                                
+                            }}
                             value={progress.position}
                             // role="progressbar"
                             thumbTintColor="#fff"

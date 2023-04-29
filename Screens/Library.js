@@ -4,8 +4,10 @@ import LibraryHeader from '../components/LibraryHeader/LibraryHeader';
 import LibraryBottom from '../components/LibraryBottom/LibraryBottom';
 import LibraryCard from '../components/LibraryCard/LibraryCard';
 import LibraryAddCard from '../components/LibraryAddCard/LibraryAddCard';
+import { useNavigation } from '@react-navigation/native';
 
 const Library = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.textwrapper}>
@@ -32,7 +34,7 @@ export default Library;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
+    backgroundColor: '#171926',
     paddingTop: 40,
   },
   textwrapper: {

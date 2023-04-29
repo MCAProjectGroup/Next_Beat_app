@@ -9,6 +9,7 @@ import React from 'react';
 import Newsongs from './Newsongs';
 
 
+
 const ListData = [
   {
    date:'6 days ago',
@@ -82,14 +83,14 @@ const Notificationpage = () => {
             The latest releases from the artist,podcasts,and shows you follow.
           </Text>
         </View>
-        <View style={styles.bottomcontainer}>
+        {/* <View style={styles.bottomcontainer}>
           <TouchableOpacity style={styles.buttonwraper}>
             <Text style={styles.playtitle}> Music </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonwraper}>
             <Text style={styles.playtitle}> podcasts & Shows </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
         <Text style={styles.newtitle}>New</Text>
         <FlatList
         keyExtractor={(item, index)=> index}
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // marginHorizontal: 15,
-    paddingHorizontal:5,
+    paddingHorizontal:10,
   },
   textcontainer: {
     paddingTop: 10,

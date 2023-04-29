@@ -32,22 +32,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:"space-between",
-    marginTop:10,
-    paddingRight:10,
-    // marginBottom:10
+    marginTop:30,
+    marginLeft:10
   },
   left_container:{
     width:'87%',
   },
-  right_container:{
-    marginTop:30
-  },
   title:{
     color:'#fff',
-    fontSize:20
+    fontSize:15
   },
   subtitle:{
     color:'grey',
-    // fontSize:20
   }
 });

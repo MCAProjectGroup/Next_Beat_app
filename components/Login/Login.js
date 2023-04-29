@@ -1,62 +1,105 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
-
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+import React from 'react';
+import { SCREEN_HEIGHT } from '../../utils';
+import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
+  const navigation=useNavigation();
   return (
-    <>
+    
     <View style={styles.container}>
-      <Text style={styles.title}>Email or username</Text>
-      <TextInput style={styles.input}/>
-      <Text style={styles.title} >Password</Text>
-      <TextInput style={styles.input} />
-     
-    </View>
-    <View style={styles.Buttonwrapper}>
-      <Text style={styles.Buttontitle}>Log in </Text>
-    </View>
-    </>
-  )
-}
+      <View style={{height:SCREEN_HEIGHT*0.8, width:"100%", alignItems:"center", justifyContent:"center"}}>
+      <Text style={styles.title}>Hello there , Welcome back</Text>
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.inputText}
+          placeholder="Email"
+          placeholderTextColor="#fff"
+          onChangeText={text => setState({email: text})}
+        />
+      </View>
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.inputText}
+          secureTextEntry
+          placeholder="Password"
+          placeholderTextColor="#fff"
+          onChangeText={text => setState({password: text})}
+        />
+      </View>
 
-export default Login
+      <TouchableOpacity style={styles.loginBtn}>
+        <Text style={{fontWeight: 'bold',fontSize:18}}>LOGIN </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate('ForgetPassword')}>
+        <Text style={styles.forgotAndSignUpText}>Forgot Password?</Text>
+      </TouchableOpacity>
+      </View>
+      <View style={{  flex:1, justifyContent:"flex-end", paddingBottom:20}}>
+      <TouchableOpacity  onPress={()=>navigation.navigate('Signpage')}>
+        <Text style={styles.forgotAndSignUpText}>
+          Don't have account Yes?{' '}
+          <Text style={{color: '#fff', fontSize: 18, fontWeight: 'bold'}}>
+            Sign up
+          </Text>
+        </Text>
+      </TouchableOpacity>
+
+      </View>
+    </View>
+    
+  );
+};
 
 const styles = StyleSheet.create({
-  container:{
-    padding:10,
-    marginTop:30,
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     
   },
-  title:{
-    color:"#fff",
-    fontWeight:'bold',
-    fontSize:30,
-    lineHeight:50,
-    marginTop:15
+  title: {
+    fontWeight: 'bold',
+    fontSize: 50,
+    color: '#fff',
+    marginBottom: 60,
   },
-  input:{
-    backgroundColor:"#717171",
-    fontSize:25,
-    color:"#fff",
-    borderRadius:5,
-    paddingLeft:15,
+  inputView: {
+    width: '80%',
+    backgroundColor: '#696969',
+    borderRadius: 25,
+    height: 50,
+    marginBottom: 20,
+    justifyContent: 'center',
+    padding: 20,
   },
-  Buttonwrapper:{
-    padding:10,
-    alignItems:'center',
-    justifyContent:"space-around",
-    backgroundColor:"#717171",
-    borderRadius:50,
-    height:60,
-    width:150,
-    margin:50 ,
-    marginHorizontal:120
+  inputText: {
+    height: 50,
+    color: '#fff',
+  },
+  forgotAndSignUpText: {
+    color: '#fff',
+    fontSize: 15,
     
   },
-  Buttontitle:{
-    fontSize:15,
-    // fontWeight:"bold",
-    color:"#121212",
-    
-  }
-})
+  loginBtn: {
+    width: '80%',
+    backgroundColor: '#1dd761',
+    borderRadius: 25,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 40,
+    marginBottom: 10,
+  },
+});
+
+
+export default Login;

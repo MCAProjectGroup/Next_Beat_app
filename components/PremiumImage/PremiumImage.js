@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         marginBottom:10
     },
     buttontext:{
-        color:"#121212",
+        color:"#171926",
         fontSize:26,
         textAlign:'center',
         

@@ -15,14 +15,14 @@ export const TabBarOptions = [
         Icon:({color})=><AntDesign name="search1" size={25} color={color} />
     },
     {
-        name:"YourLibrary",
+        name:"Your Library",
         path:"YourLibrary",
         Icon:({color})=><Icon name="library" size={25} color={color} />
     },
     {
-        name:"Premium",
-        path:"Premium",
-        Icon:({color})=><MCI name="spotify" size={25} color={color} />
+        name:"My Account",
+        path:"Setting",
+        Icon:({color})=><Icon name="person-sharp" size={25} color={color} />
     },
 
 ]

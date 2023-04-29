@@ -21,7 +21,7 @@ export default Premium
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor:'#121212',
+    backgroundColor:'#171926',
     // marginTop:40, 
   },
 })

@@ -40,7 +40,7 @@ export default LibraryHeader;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
+    backgroundColor: '#171926',
     paddingTop: 10,
       flexDirection:'row'
     
