@@ -101,8 +101,9 @@ const ListData = [
 
 ]
 
-const SearchCard = () => {
+const SearchCard = (props) => {
   const navigation = useNavigation();
+  console.log(props);
   return (
     
     <View style={styles.wrapper} >
@@ -111,11 +112,11 @@ const SearchCard = () => {
       // onPress
         numColumns={2}
         keyExtractor={(item, index)=> index+"asdas"}
-        data={ListData}
+        data={props.data || ListData}
         // ItemSeparatorComponent={()=><View style={{height:5}} />}
         ListHeaderComponent={()=><View style={{height:10}} />}
         renderItem={({item})=>(
-          <Searchitem title={item.name} bgColor={item.bgColor} />
+          <Searchitem title={item.name} bgColor={"#D92763"} live_image={item.live_image}/>
 
         )}
       />

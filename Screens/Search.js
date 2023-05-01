@@ -1,10 +1,19 @@
 import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import SearchCard from '../components/SearchCard/SearchCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategoryData } from '../store/category';
 
 const Search = () => {
+  const dispatch = useDispatch();
+  const categories = useSelector(state => state.category.categories)
+  useLayoutEffect(() => {
+    dispatch(getCategoryData());  
+  
+  }, [])
+  console.log({categories});
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.textwrapper}>
@@ -21,7 +30,7 @@ const Search = () => {
         <View style={styles.subwrap}>
           <Text style={styles.subtitle}>Brower all</Text>
         </View>
-        <SearchCard />
+        <SearchCard data={categories} />
       </ScrollView>
     </SafeAreaView>
   );

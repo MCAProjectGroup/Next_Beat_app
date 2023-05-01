@@ -20,7 +20,10 @@ import messaging from '@react-native-firebase/messaging';
 // import { setupPlayerManager } from './service';
 
 import AuthNavigation from './Navigtion/AuthNavigation';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import FlashMessage from 'react-native-flash-message';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LoginSuccessfully } from './store/auth';
 
 export const trackList = [
   {
@@ -142,6 +145,15 @@ const setupPlayerManager = async () => {
 const App = () => {
   // const token = "hghjg";
   const auth = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  const checkAuth = async()=>{
+      try {
+        const token = await AsyncStorage.getItem("@token")
+        dispatch(LoginSuccessfully({ token: token }));
+      } catch (error) {
+        
+      }
+  }
   // console.log({auth});
   // const [IsPlayerReady, setIsPlayerReady] = useState(false);
   // const addSong = async()=>{
@@ -185,6 +197,7 @@ const App = () => {
   useEffect(() => {
     SplashScreen.hide();
     initialize();
+    checkAuth()
   }, []);
 
   useEffect(() => {
@@ -234,6 +247,7 @@ const App = () => {
   return (
     <View style={styles.wrapper}>
       {auth.token ? <BottomTabNavigation /> : <AuthNavigation />}
+      <FlashMessage position={"top"} />
     </View>
   );
 };

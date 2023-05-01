@@ -6,15 +6,57 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
-import { SCREEN_HEIGHT } from '../../utils';
+import React, { useEffect } from 'react';
+import { SCREEN_HEIGHT, showFlashMessage, showYupFormValidationError } from '../../utils';
 import { useNavigation } from '@react-navigation/native';
+import { LoginSuccessfully } from '../../store/auth';
+
+import * as yup from "yup"
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { request } from '../../utils/request';
+import { useDispatch } from 'react-redux';
+
+
+const formSchema = yup.object().shape({
+
+  email: yup.string().email().required("Email is Required"),
+  password: yup.string().required("Password is Required"),
+});
 
 const Login = () => {
   const navigation=useNavigation();
+  const dispatch = useDispatch();
+  const { setValue, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(formSchema),
+  });
+
+  const _stateManager = (key, value = "") => {
+    setValue(key, value);
+  }
+
+  const _signinHandler = async (data) => {
+    console.log({ data })
+   
+    try {
+      const res = await request("post","auth/login",data);
+      console.log(res.data);
+      dispatch(LoginSuccessfully(res.data.data))
+    } catch (error) {
+      console.log({error});
+      showFlashMessage(error.response.data.message,"", "danger");
+    }
+  }
+  useEffect(() => {
+    // console.log({errors});
+    showYupFormValidationError(errors)
+
+  }, [errors])
+
   return (
     
     <View style={styles.container}>
+      <ScrollView style={{width:"100%",}}>
       <View style={{height:SCREEN_HEIGHT*0.8, width:"100%", alignItems:"center", justifyContent:"center"}}>
       <Text style={styles.title}>Hello there , Welcome back</Text>
       <View style={styles.inputView}>
@@ -22,7 +64,7 @@ const Login = () => {
           style={styles.inputText}
           placeholder="Email"
           placeholderTextColor="#fff"
-          onChangeText={text => setState({email: text})}
+          onChangeText={text =>_stateManager("email", text)}
         />
       </View>
       <View style={styles.inputView}>
@@ -31,18 +73,18 @@ const Login = () => {
           secureTextEntry
           placeholder="Password"
           placeholderTextColor="#fff"
-          onChangeText={text => setState({password: text})}
+          onChangeText={text => _stateManager("password", text)}
         />
       </View>
 
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={{fontWeight: 'bold',fontSize:18}}>LOGIN </Text>
+      <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit(_signinHandler)}>
+        <Text style={{fontWeight: 'bold',fontSize:18, color:"#000"}}>LOGIN </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>navigation.navigate('ForgetPassword')}>
         <Text style={styles.forgotAndSignUpText}>Forgot Password?</Text>
       </TouchableOpacity>
       </View>
-      <View style={{  flex:1, justifyContent:"flex-end", paddingBottom:20}}>
+      <View style={{  flex:1, justifyContent:"flex-end", paddingBottom:20, alignItems:"center"}}>
       <TouchableOpacity  onPress={()=>navigation.navigate('Signpage')}>
         <Text style={styles.forgotAndSignUpText}>
           Don't have account Yes?{' '}
@@ -53,6 +95,7 @@ const Login = () => {
       </TouchableOpacity>
 
       </View>
+      </ScrollView>
     </View>
     
   );

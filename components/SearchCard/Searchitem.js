@@ -1,17 +1,19 @@
-import { StyleSheet, Text, View,TouchableOpacity,Image } from 'react-native'
+import { StyleSheet, Text, View,TouchableOpacity,Image, ImageBackground } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-const Searchitem = ({title, bgColor}) => {
+const Searchitem = ({title, bgColor,live_image}) => {
   const navigation = useNavigation()
   return (
     <View style={styles.wrapper}>
         <TouchableOpacity style={styles.playlistdesc} onPress={()=> navigation.navigate("Categories")} >
-        <View style={[styles.container,{backgroundColor:bgColor}]}>
+        <ImageBackground style={[styles.container,{backgroundColor:bgColor}]} source={{uri:live_image}} imageStyle={{...styles.container, resizeMode:"cover"}}>
+          
           <Text style={styles.title}>{title}</Text>
-        </View>
+        </ImageBackground>
+        
         </TouchableOpacity>
-
+        
       </View>
   )
 }

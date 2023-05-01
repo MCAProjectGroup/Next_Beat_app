@@ -1,13 +1,17 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
 import BottomDemo from './BottomDemo'
+import { useDispatch } from 'react-redux'
+import { LogoutSuccessfully } from '../../store/auth'
 
 const Logout = () => {
+  const dispatch = useDispatch();
+
   return (
     <View style={styles.container}>
       <Text style={{fontSize:32,fontWeight:'bold',color:'#fff'}}>Logout</Text>
       <Text style={{fontSize:17,fontWeight:'400',color:'grey',marginTop:10}}>Are you sure want to logout of Musify Music ?</Text>
-      <TouchableOpacity style={styles.logoutBtn}>
+      <TouchableOpacity style={styles.logoutBtn} onPress={()=>dispatch(LogoutSuccessfully())}>
         <Text style={{fontWeight: 'bold',fontSize:18,color:'#000'}}>Yes</Text>
       </TouchableOpacity>
     </View>
