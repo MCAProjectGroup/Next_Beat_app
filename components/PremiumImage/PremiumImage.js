@@ -7,11 +7,17 @@ const PremiumImage = () => {
     <View style={{flex:1,}}>
       <View style={styles.imgcontainer}> 
       <Image
-        source={{uri:"https://source.unsplash.com/featured/300x237"}}
+        source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqxDmZdUNct9yiPfV-mgjs1bX-2aSRexgVPw&usqp=CAU"}}
         style={styles.playlistImage}
         />
         <View style={styles.heading}>
-        <Entypo name="spotify" size={24} color="#fff"/>
+        {/* <Entypo name="spotify" size={24} color="#fff"/> */}
+        <Image source={{uri:"https://res.cloudinary.com/jesnal/image/upload/v1677006063/musify/app_logo_xxskfq.png"}}
+              style={{height:30,width:30,resizeMode:'cover',borderRadius:20
+
+              }}
+      
+              />
         <Text style={styles.title}>Premium</Text>
         </View>
         <Text style={styles.header}> Ends soon : 3 months of Premium for $0</Text>

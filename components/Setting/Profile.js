@@ -6,7 +6,7 @@ const Profile = () => {
     <View style={styles.container}>
       <View style={styles.wrapper}>
         <Image
-        source={{uri:'https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/spotify-512.png'}}
+        source={{uri:'https://res.cloudinary.com/jesnal/image/upload/v1677006063/musify/app_logo_xxskfq.png'}}
         style={styles.imagecover}
         />
         <View>
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
     
   },
   imagecover:{
-    height:38,
-    width:38,
+    height:40,
+    width:40,
     borderRadius:20,
     resizeMode:'contain',
     marginLeft:10,

@@ -28,7 +28,7 @@ const Language = () => {
   );
 };
 
-export default BottomDemo(Language);
+export default (Language);
 
 const styles = StyleSheet.create({
   container: {

@@ -22,6 +22,7 @@ import messaging from '@react-native-firebase/messaging';
 import AuthNavigation from './Navigtion/AuthNavigation';
 import {useSelector} from 'react-redux';
 
+
 export const trackList = [
   {
     id: 'trackId',
@@ -231,6 +232,7 @@ const App = () => {
   // return null;
   return (
     <View style={styles.wrapper}>
+      
       {auth.token ? <BottomTabNavigation /> : <AuthNavigation />}
     </View>
   );
