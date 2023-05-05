@@ -21,7 +21,7 @@ const Home = () => {
     <View style={{flex: 1, paddingHorizontal: 15}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* <BelowButton /> */}
-        <Rechentplaylist />
+        {/* <Rechentplaylist /> */}
         <View>
           <Albums title="Chart's mix" />
           <Albums title="Based on your recent Search" />
