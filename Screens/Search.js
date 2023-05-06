@@ -1,10 +1,13 @@
 import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import SearchCard from '../components/SearchCard/SearchCard';
+import { useNavigation } from '@react-navigation/native';
 
 const Search = () => {
+  const [searchInput, setSearchInput] = useState("");
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.textwrapper}>
@@ -15,6 +18,9 @@ const Search = () => {
         <TextInput
           placeholder="What do you want to listen to?"
           style={styles.input}
+          value={searchInput}
+          onChangeText={setSearchInput}
+          onSubmitEditing={()=>navigation.navigate("Searchlisting",{searchInput})}
         />
       </View>
       <ScrollView>

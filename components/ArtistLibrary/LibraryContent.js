@@ -17,10 +17,10 @@ const LibraryContent = () => {
       <ScrollView>
       <ArtistLibrary/>
       <LibrarySongsContainer/>
-      <PopularContainer/>
-      <FeaturingContainer/>
-      <ArtistDesc/>
-      <ArtistFansContainer/>
+      {/* <PopularContainer/> */}
+      {/* <FeaturingContainer/> */}
+      {/* <ArtistDesc/> */}
+      {/* <ArtistFansContainer/> */}
       </ScrollView>
     </View>
   )

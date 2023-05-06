@@ -13,7 +13,7 @@ const Library = () => {
       <View style={styles.textwrapper}>
         <LibraryHeader />
       </View>
-      <LibraryBottom />
+      {/* <LibraryBottom /> */}
       <ScrollView>
         <LibraryCard title="Mohit Chauhan" />
         <LibraryCard title="KK" />
@@ -23,7 +23,7 @@ const Library = () => {
         <LibraryCard title="Mohit Chauhan" />
         <LibraryCard title="Arijit Singh" />
         <LibraryCard title="Neha Kakar" />
-        <LibraryAddCard />
+        {/* <LibraryAddCard /> */}
       </ScrollView>
     </SafeAreaView>
   );

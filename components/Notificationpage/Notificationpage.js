@@ -91,15 +91,15 @@ const Notificationpage = () => {
             <Text style={styles.playtitle}> podcasts & Shows </Text>
           </TouchableOpacity>
         </View> */}
-        <Text style={styles.newtitle}>New</Text>
-        <FlatList
+        {/* <Text style={styles.newtitle}>New</Text> */}
+        {/* <FlatList
         keyExtractor={(item, index)=> index}
         data={ListData}
         ListHeaderComponent={()=><View  />}
         renderItem={({item})=>(
           <Newsongs  date={item.date} sname={item.sname} aname={item.aname}/>
         )}
-      />
+      /> */}
       {/* <Newsongs  date="6 day ago" sname="Hello World" aname="Arijit Singh"/> */}
       </View>
     </ScrollView>

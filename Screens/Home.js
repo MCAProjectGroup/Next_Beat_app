@@ -10,14 +10,14 @@ const Home = () => {
     <View style={{flex: 1, paddingHorizontal: 15}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* <BelowButton /> */}
-        <Rechentplaylist />
+        {/* <Rechentplaylist /> */}
         <View>
           <Albums title="Chart's mix" />
           <Albums title="Based on your recent Search" />
           <Albums title="Trending Valentine'Hits" />
-          <Albums title="Your top mixes" />
-          <Albums title="India's Best" />
-          <Albums title="Happy 2023" />
+          {/* <Albums title="Your top mixes" /> */}
+          {/* <Albums title="India's Best" />
+          <Albums title="Happy 2023" /> */}
         </View>
       </ScrollView>
 

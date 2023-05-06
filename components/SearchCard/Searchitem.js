@@ -6,7 +6,7 @@ const Searchitem = ({title, bgColor}) => {
   const navigation = useNavigation()
   return (
     <View style={styles.wrapper}>
-        <TouchableOpacity style={styles.playlistdesc} onPress={()=> navigation.navigate("Categories")} >
+        <TouchableOpacity style={styles.playlistdesc} onPress={()=> navigation.navigate("playlist")} >
         <View style={[styles.container,{backgroundColor:bgColor}]}>
           <Text style={styles.title}>{title}</Text>
         </View>

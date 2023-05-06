@@ -31,7 +31,7 @@ const Login = () => {
           secureTextEntry
           placeholder="Password"
           placeholderTextColor="#fff"
-          onChangeText={text => setState({password: text})}
+          // onChangeText={text => setState({password: text})}
         />
       </View>
 
