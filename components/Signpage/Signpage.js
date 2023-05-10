@@ -104,7 +104,7 @@ const Signpage = () => {
             <View style={styles.inputView}>
               <TextInput
                 style={styles.inputText}
-                secureTextEntry
+                // secureTextEntry
                 placeholder="Phone Number"
                 placeholderTextColor="#fff"
                 onChangeText={text => _stateManager("phone", text)}

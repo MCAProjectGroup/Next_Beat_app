@@ -23,6 +23,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import FlashMessage from 'react-native-flash-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LoginSuccessfully } from './store/auth';
+import Forgetpassword from './components/ForgetPassword/Forgetpassword';
+import Resetotp from './components/ForgetPassword/Resetotp';
 
 export const trackList = [
   {

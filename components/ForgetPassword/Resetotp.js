@@ -34,11 +34,11 @@ export default Resetotp
         flex:1,
         alignItems:'center',
         justifyContent:'center',
-        backgroundColor:'pink',
+        // backgroundColor:'pink',
     },
     textwrapper:{
         alignItems:'center',
-        backgroundColor:'orange'
+        // backgroundColor:'orange'
 
     },
     title:{
