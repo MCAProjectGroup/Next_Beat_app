@@ -2,26 +2,24 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import React from 'react';
 import TrackPlayer from 'react-native-track-player';
+import { TrackPlayerAddAndPlay } from '../../utils/player';
 
 
 const Albumbottom = (props) => {
   const item = props.item;
-  const TrackPlayerAddAndPlay = async(data) => {
-    try {
+  // const TrackPlay = async(data) => {
+  //   try {
       
-      await TrackPlayer.removeUpcomingTracks();
-      await TrackPlayer.add(data)
-      await TrackPlayer.skipToNext();
-      await TrackPlayer.play()
+  //     await TrackPlayerAddAndPlay(data)
       
-    } catch (error) {
-      console.log({error})
-    }
-  }
+  //   } catch (error) {
+  //     console.log({error})
+  //   }
+  // }
   
   return (
     <TouchableOpacity onPress={()=> TrackPlayerAddAndPlay(  {
-      id: 'trackId',
+      id: item._id,
       url: item.live_song,
       title: item.title,
       artist: item.artists_details.map(item => item.name).join(", "),

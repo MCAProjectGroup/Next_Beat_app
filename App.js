@@ -13,11 +13,10 @@ import TrackPlayer, {
   useTrackPlayerEvents,
 } from 'react-native-track-player';
 import notifee, {AndroidImportance, AndroidStyle} from '@notifee/react-native';
-import {setupPlayer, addTracks} from './service';
 
+import {setupPlayerManager} from "./utils/player"
 import Musicalbum from './components/MusicAlbum/Musicalbum';
 import messaging from '@react-native-firebase/messaging';
-// import { setupPlayerManager } from './service';
 
 import AuthNavigation from './Navigtion/AuthNavigation';
 import {useDispatch, useSelector} from 'react-redux';
@@ -93,55 +92,6 @@ export const trackList = [
   },
 ];
 
-const setupPlayerManager = async () => {
-  let isSetup = false;
-  console.log('hello');
-  try {
-    await TrackPlayer.getCurrentTrack();
-    isSetup = true;
-  } catch {
-    console.log('setup run');
-
-    await TrackPlayer.setupPlayer();
-    await TrackPlayer.updateOptions({
-      android: {
-        appKilledPlaybackBehavior:
-          AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
-      },
-
-      capabilities: [
-        Capability.Play,
-        Capability.Pause,
-        Capability.SkipToNext,
-        Capability.SkipToPrevious,
-        Capability.SeekTo,
-        Capability.Stop,
-      ],
-      compactCapabilities: [
-        Capability.Play,
-        Capability.Pause,
-        Capability.SkipToNext,
-        Capability.SkipToPrevious,
-        Capability.SeekTo,
-        Capability.Stop,
-      ],
-      notificationCapabilities: [
-        Capability.Play,
-        Capability.Pause,
-        Capability.SkipToNext,
-        Capability.SkipToPrevious,
-        Capability.SeekTo,
-        Capability.Stop,
-      ],
-      alwaysPauseOnInterruption:true,
-      progressUpdateEventInterval: 2,
-    });
-
-    isSetup = true;
-  } finally {
-    return isSetup;
-  }
-};
 const App = () => {
   // const token = "hghjg";
   const auth = useSelector(state => state.auth);
@@ -175,7 +125,7 @@ const App = () => {
     // await setupPlayer()
     // Add a track to the queue
     // await TrackPlayer.add();
-    await TrackPlayer.add(trackList);
+    // await TrackPlayer.add(trackList);
 
     // Start playing it
     // await TrackPlayer.play();
