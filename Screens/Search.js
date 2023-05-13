@@ -5,10 +5,13 @@ import Feather from 'react-native-vector-icons/Feather';
 import SearchCard from '../components/SearchCard/SearchCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategoryData } from '../store/category';
+import { useNavigation } from '@react-navigation/native';
 
 const Search = () => {
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.category.categories)
+  const categories = useSelector(state => state.category.categories);
+  const navigation = useNavigation();
+
   useLayoutEffect(() => {
     dispatch(getCategoryData());  
   
@@ -24,6 +27,9 @@ const Search = () => {
         <TextInput
           placeholder="What do you want to listen to?"
           style={styles.input}
+          value={searchInput}
+          onChangeText={setSearchInput}
+          onSubmitEditing={()=>navigation.navigate("Searchlisting",{searchInput})}
         />
       </View>
       <ScrollView>

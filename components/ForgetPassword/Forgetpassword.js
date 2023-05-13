@@ -8,14 +8,16 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { request } from '../../utils/request';
+import { useNavigation } from '@react-navigation/native';
 
 const Forgetpassword = () => {
   const [email, setEmail] = useState("")
-
+  const navigation = useNavigation();
   const _forgetPassword = async () => {
     try {
       const res = await request("put","auth/forget-password", {email})
       console.log(res.data);
+      navigation.navigate("ResetOtp",{email});
     } catch (error) {
       console.log(error.response.data)
     }

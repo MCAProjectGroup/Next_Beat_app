@@ -19,6 +19,7 @@ import Premium from '../Screens/Premium';
 import Forgetpassword from '../components/ForgetPassword/Forgetpassword';
 import Help from '../components/Setting/Help';
 import Profilepage from '../components/Setting/Profilepage';
+import Searchlisting from '../components/SearchListing/Searchlisting';
 
 function HomeScreen() {
   return (
@@ -65,6 +66,7 @@ function StackNavigation() {
         <Stack.Screen name="play" component={Playspage} />
         <Stack.Screen name="podcasts" component={Podcasts} />
         <Stack.Screen name="Categories" component={Categories} />
+        <Stack.Screen name="Searchlisting" component={Searchlisting} />
         <Stack.Screen name="premium" component={Premium} options={{
           title:"Best Offer For You"
         }} />

@@ -21,15 +21,17 @@ const Header = () => {
         <ScrollView>
           <View style={styles.textwrapper}>
             {/* <Touch */}
-            <TouchableOpacity onPress={()=>navigation.navigate("premium")} style={{backgroundColor:'#1dd761',borderRadius:10}}>
+            <TouchableOpacity onPress={()=>navigation.navigate("premium")} >
             <View style={{flexDirection:"row",alignItems:'center', paddingHorizontal:16,borderRadius:20,}}>
-              <Image source={{uri:"https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/spotify-512.png"}}
-              style={{height:30,width:30,resizeMode:'contain',borderRadius:20
+              <Image source={{uri:"https://res.cloudinary.com/jesnal/image/upload/v1677006063/musify/app_logo_xxskfq.png"}}
+              style={{height:35,width:35,resizeMode:'cover',borderRadius:20
 
               }}
       
               />
+              <View style={{borderRadius:10}}>
               <Text style={styles.title}> Go Premium</Text>
+              </View>
 
             </View>
             </TouchableOpacity>
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
     marginTop:20,
     marginBottom:14,
     backgroundColor: '#171926',
-    paddingHorizontal: 16,
+    paddingHorizontal: 10,
     paddingVertical:10
   },
   textwrapper: {
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent:"space-between"
   },
   title: {
-    color: '#000',
+    color: '#fff',
     fontWeight: '500',
     fontSize: 24, 
     paddingVertical:8,

@@ -39,6 +39,8 @@ const slice = createSlice({
         LogoutSuccessfully:(state)=>{
             state.token = "";
             state.user = {};
+            AsyncStorage.removeItem("@token");
+
         },
     },
     extraReducers:{

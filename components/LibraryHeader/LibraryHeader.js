@@ -25,11 +25,11 @@ const LibraryHeader = () => {
             <Antdesign name="search1" size={24} color="#fff" />
             </TouchableOpacity>
             </View>
-            <View style={styles.libraryicon}>
-            <TouchableOpacity>
-            <Antdesign name="plus" size={24} color="#fff" />
-            </TouchableOpacity>
-        </View>
+            {/* <View style={styles.libraryicon}> */}
+            {/* <TouchableOpacity>
+             {/* <Antdesign name="plus" size={24} color="#fff" />  */}
+            {/* </TouchableOpacity>  */} 
+        {/* </View> */}
       </View>
     </SafeAreaView>
   );
@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#171926',
     paddingTop: 10,
-      flexDirection:'row'
+      flexDirection:'row',
+      paddingBottom:7
     
   },
   textwrapper: {

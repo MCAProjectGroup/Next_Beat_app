@@ -1,9 +1,24 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
+import { useState } from 'react';
 import { View ,StyleSheet,Text,TouchableOpacity} from 'react-native'
 import OtpInputs from 'react-native-otp-inputs';
+import { request } from '../../utils/request';
 
 
-const Resetotp = () => {
+const Resetotp = (props) => {
+  const email = props.route.params.email || "";
+  const [otp, setOtp] = useState("");
+  const navigation = useNavigation();
+  const _verifyOTP = async () => {
+    try {
+      const res = await request("put","auth/forget-password/check-otp-verify", {email,otp})
+      // console.log(res.data);
+      navigation.navigate("ResetPassword",{email,otp});
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
   return (
     <View style={styles.container}>
     <View style={styles.textwrapper}>
@@ -12,14 +27,14 @@ const Resetotp = () => {
       </View>
       <View style={{height:100,backgroundColor:'#fff',width:'88%'}}>
       <OtpInputs
-          handleChange={(code) => console.log(code)}
+          handleChange={setOtp}
           numberOfInputs={4} placeholder={'X'}
           inputStyles={{fontSize:20,fontWeight:'bold',color:'#000',}}
           inputContainerStyles={{padding:10}}
         />
         </View>
 
-      <TouchableOpacity style={styles.verifyBtn}>
+      <TouchableOpacity style={styles.verifyBtn} onPress={_verifyOTP}>
             <Text style={{fontWeight: 'bold',fontSize:18}}>VERIFY</Text>
           </TouchableOpacity>
     

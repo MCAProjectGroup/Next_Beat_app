@@ -56,7 +56,7 @@ const Setting = () => {
             <Profile />
 
             {/* SETTING WITH ARROW */}
-            <View style={{marginTop:20,marginLeft:10}}>
+            {/* <View style={{marginTop:20,marginLeft:10}}>
             <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 20}}>
               Music Listening Preferences
             </Text>
@@ -87,7 +87,7 @@ const Setting = () => {
             </View>
 
             {/* SWITCH BUTTON */}
-            <Settingcontentdata
+            {/* <Settingcontentdata
               stitle={'Offline Songs On slow Internet'}
               ssubtitle={'Play downloaded and mp3 songs only'}
             />
@@ -96,12 +96,12 @@ const Setting = () => {
               ssubtitle={
                 'Turn off to skip explict content Explict content is labeled with E tag'
               }
-            />
-            <Settingcontentdata stitle={'Sleep Timer'} />
-            <Settingcontentdata stitle={'Show Lyrics on player'} />
+            /> */}
+            {/* <Settingcontentdata stitle={'Sleep Timer'} />
+            <Settingcontentdata stitle={'Show Lyrics on player'} />  */}
 
             {/* CONTENT WITH ARROW */}
-            <View style={{marginTop: 40, marginLeft: 10}}>
+            {/* <View style={{marginTop: 40, marginLeft: 10}}>
               <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 20}}>
                 Offline Music Preferences
               </Text>
@@ -115,7 +115,7 @@ const Setting = () => {
                   })
                 }
               />
-            </View>
+            </View> */}
             {/* CONTENT WITH ARROW  AND PROFILE DEAILS*/}
             <View style={{marginTop: 40, marginLeft: 10}}>
               <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 20}}>

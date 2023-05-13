@@ -26,6 +26,7 @@ import { LoginSuccessfully } from './store/auth';
 import Forgetpassword from './components/ForgetPassword/Forgetpassword';
 import Resetotp from './components/ForgetPassword/Resetotp';
 
+
 export const trackList = [
   {
     id: 'trackId',
@@ -198,6 +199,7 @@ const App = () => {
   // return null;
   return (
     <View style={styles.wrapper}>
+      
       {auth.token ? <BottomTabNavigation /> : <AuthNavigation />}
       <FlashMessage position={"top"} />
     </View>

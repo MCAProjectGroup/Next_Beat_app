@@ -6,7 +6,7 @@ const Searchitem = ({title, bgColor,live_image}) => {
   const navigation = useNavigation()
   return (
     <View style={styles.wrapper}>
-        <TouchableOpacity style={styles.playlistdesc} onPress={()=> navigation.navigate("Categories")} >
+        <TouchableOpacity style={styles.playlistdesc} onPress={()=> navigation.navigate("playlist")} >
         <ImageBackground style={[styles.container,{backgroundColor:bgColor}]} source={{uri:live_image}} imageStyle={{...styles.container, resizeMode:"cover"}}>
           
           <Text style={styles.title}>{title}</Text>
