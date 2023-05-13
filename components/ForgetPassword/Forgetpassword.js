@@ -6,9 +6,21 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
+import { request } from '../../utils/request';
 
 const Forgetpassword = () => {
+  const [email, setEmail] = useState("")
+
+  const _forgetPassword = async () => {
+    try {
+      const res = await request("put","auth/forget-password", {email})
+      console.log(res.data);
+    } catch (error) {
+      console.log(error.response.data)
+    }
+  }
+
   return (
     <View style={styles.container}>
         <View style={{marginBottom: 60,alignItems:'center'}}>
@@ -22,11 +34,11 @@ const Forgetpassword = () => {
             style={styles.inputText}
             placeholder="Email"
             placeholderTextColor="#fff"
-            onChangeText={text => setState({email: text})}
+            onChangeText={setEmail}
           />
         </View>
 
-        <TouchableOpacity style={styles.forgetBtn}>
+        <TouchableOpacity onPress={_forgetPassword} style={styles.forgetBtn}>
           <Text style={{fontWeight: 'bold',fontSize:18}}>Reset Password</Text>
         </TouchableOpacity>
       </View>
