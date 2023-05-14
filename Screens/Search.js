@@ -1,5 +1,5 @@
 import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import SearchCard from '../components/SearchCard/SearchCard';
@@ -11,7 +11,7 @@ const Search = () => {
   const dispatch = useDispatch();
   const categories = useSelector(state => state.category.categories);
   const navigation = useNavigation();
-
+  const [searchInput, setSearchInput] = useState("")
   useLayoutEffect(() => {
     dispatch(getCategoryData());  
   

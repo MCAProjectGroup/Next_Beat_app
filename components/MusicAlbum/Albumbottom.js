@@ -17,7 +17,7 @@ const Albumbottom = (props) => {
   //   }
   // }
   
-  return (
+  return item?._id && (
     <TouchableOpacity onPress={()=> TrackPlayerAddAndPlay(  {
       id: item._id,
       url: item.live_song,

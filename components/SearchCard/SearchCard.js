@@ -116,7 +116,7 @@ const SearchCard = (props) => {
         // ItemSeparatorComponent={()=><View style={{height:5}} />}
         ListHeaderComponent={()=><View style={{height:10}} />}
         renderItem={({item})=>(
-          <Searchitem title={item.name} bgColor={"#D92763"} live_image={item.live_image}/>
+          <Searchitem {...item } bgColor={"#D92763"} />
 
         )}
       />

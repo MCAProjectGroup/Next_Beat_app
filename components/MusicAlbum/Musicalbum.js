@@ -3,18 +3,24 @@ import React, { useEffect, useState } from 'react';
 import Albumbottom from './Albumbottom';
 import Albumheader from './Albumheader';
 import { request } from '../../utils/request';
+import { useRoute } from '@react-navigation/native';
 
-const getSongList = async ()=>{
-  return await request("get","user/songs")
+const getSongList = async (query)=>{
+  return await request("get","user/songs?"+query)
 }
 
 const Musicalbum = () => {
-
+  const route = useRoute()
+  const params = route.params;
   const [SongsList, setSongsList] = useState([])
 
   const _getSongList = async ()=>{
     try {
-      const res = await getSongList();
+      let query = "" 
+      if(params.category){
+        query = "category=" + params.category;
+      }
+      const res = await getSongList(query);
       setSongsList(res.data.data);
       console.log({res:res.data});
     } catch (error) {
