@@ -30,8 +30,8 @@ const PremiumImage = () => {
   
       </Text>
       </View>
-      
 
+      
     </View>
   )
 }

@@ -20,75 +20,80 @@ import messaging from '@react-native-firebase/messaging';
 // import { setupPlayerManager } from './service';
 
 import AuthNavigation from './Navigtion/AuthNavigation';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import FlashMessage from 'react-native-flash-message';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LoginSuccessfully } from './store/auth';
+import Forgetpassword from './components/ForgetPassword/Forgetpassword';
+import Resetotp from './components/ForgetPassword/Resetotp';
 
 
 export const trackList = [
-  {
-    id: 'trackId',
-    url: require('./song1.mp3'),
-    title: 'Raatan Lambiyan',
-    artist: 'Jubin Nautiyal, Asees Kaur',
-    artwork: 'https://www.pagalworld.com.se/siteuploads/thumb/sft7/3198_4.jpg',
-    duration: 230,
-  },
-  {
-    id: 'trackId2',
-    url: require('./song2.mp3'),
-    title: 'Baarish Mein Tum',
-    artist: 'Neha Kakkar, Rohanpreet Singh',
-    artwork:
-      'https://www.pagalworld.com.se/siteuploads/thumb/sft128/63993_4.jpg',
-    duration: 227,
-  },
-  {
-    id: 'trackId3',
-    url: require('./song3.mp3'),
-    title: 'Dhokha',
-    artist: 'Arijit Singh',
-    artwork: 'https://www.pagalworld.com.se/siteuploads/thumb/sft11/5054_4.jpg',
-    duration: 245,
-  },
-  {
-    id: 'trackId4',
-    url: require('./song4.mp3'),
-    title: 'Meri Zindagi Hai Tu',
-    artist: 'Jubin Nautiyal, Neeti Mohan',
-    artwork: 'https://www.pagalworld.com.se/siteuploads/thumb/sft9/4203_4.jpg',
-    duration: 219,
-  },
-  {
-    id: 'trackId5',
-    url: require('./song5.mp3'),
-    title: 'Pyaar Karte Ho Na',
-    artist: 'Stebin Ben, Shreya Ghoshal',
-    artwork: 'https://www.pagalworld.com.se/siteuploads/thumb/sft9/4477_4.jpg',
-    duration: 191,
-  },
-  {
-    id: 'trackId6',
-    url: require('./song6.mp3'),
-    title: 'Mehrama',
-    artist: 'Darshan Raval, Antara Mitra',
-    artwork: 'https://www.pagalworld.us/_big/love-aaj-kal-2-2020-250.jpg',
-    duration: 245.4,
-  },
-  {
-    id: 'trackId7',
-    url: require('./song7.mp3'),
-    title: 'Shayad',
-    artist: 'Arijit Singh',
-    artwork: 'https://www.pagalworld.us/_big/love-aaj-kal-2-2020-250.jpg',
-    duration: 248,
-  },
-  {
-    id: 'trackId8',
-    url: require('./song8.mp3'),
-    title: 'Suzume No Tojimari ',
-    artist: 'Chill Box',
-    artwork: 'https://paglasongs.com/uploads/thumb/sft19/9474_4.jpg',
-    duration: 215.4,
-  },
+  // {
+  //   id: 'trackId',
+  //   url: require('./song1.mp3'),
+  //   title: 'Raatan Lambiyan',
+  //   artist: 'Jubin Nautiyal, Asees Kaur',
+  //   artwork: 'https://www.pagalworld.com.se/siteuploads/thumb/sft7/3198_4.jpg',
+  //   duration: 230,
+  // },
+  // {
+  //   id: 'trackId2',
+  //   url: require('./song2.mp3'),
+  //   title: 'Baarish Mein Tum',
+  //   artist: 'Neha Kakkar, Rohanpreet Singh',
+  //   artwork:
+  //     'https://www.pagalworld.com.se/siteuploads/thumb/sft128/63993_4.jpg',
+  //   duration: 227,
+  // },
+  // {
+  //   id: 'trackId3',
+  //   url: require('./song3.mp3'),
+  //   title: 'Dhokha',
+  //   artist: 'Arijit Singh',
+  //   artwork: 'https://www.pagalworld.com.se/siteuploads/thumb/sft11/5054_4.jpg',
+  //   duration: 245,
+  // },
+  // {
+  //   id: 'trackId4',
+  //   url: require('./song4.mp3'),
+  //   title: 'Meri Zindagi Hai Tu',
+  //   artist: 'Jubin Nautiyal, Neeti Mohan',
+  //   artwork: 'https://www.pagalworld.com.se/siteuploads/thumb/sft9/4203_4.jpg',
+  //   duration: 219,
+  // },
+  // {
+  //   id: 'trackId5',
+  //   url: require('./song5.mp3'),
+  //   title: 'Pyaar Karte Ho Na',
+  //   artist: 'Stebin Ben, Shreya Ghoshal',
+  //   artwork: 'https://www.pagalworld.com.se/siteuploads/thumb/sft9/4477_4.jpg',
+  //   duration: 191,
+  // },
+  // {
+  //   id: 'trackId6',
+  //   url: require('./song6.mp3'),
+  //   title: 'Mehrama',
+  //   artist: 'Darshan Raval, Antara Mitra',
+  //   artwork: 'https://www.pagalworld.us/_big/love-aaj-kal-2-2020-250.jpg',
+  //   duration: 245.4,
+  // },
+  // {
+  //   id: 'trackId7',
+  //   url: require('./song7.mp3'),
+  //   title: 'Shayad',
+  //   artist: 'Arijit Singh',
+  //   artwork: 'https://www.pagalworld.us/_big/love-aaj-kal-2-2020-250.jpg',
+  //   duration: 248,
+  // },
+  // {
+  //   id: 'trackId8',
+  //   url: require('./song8.mp3'),
+  //   title: 'Suzume No Tojimari ',
+  //   artist: 'Chill Box',
+  //   artwork: 'https://paglasongs.com/uploads/thumb/sft19/9474_4.jpg',
+  //   duration: 215.4,
+  // },
 ];
 
 const setupPlayerManager = async () => {
@@ -106,6 +111,7 @@ const setupPlayerManager = async () => {
         appKilledPlaybackBehavior:
           AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
       },
+
       capabilities: [
         Capability.Play,
         Capability.Pause,
@@ -130,6 +136,7 @@ const setupPlayerManager = async () => {
         Capability.SeekTo,
         Capability.Stop,
       ],
+      alwaysPauseOnInterruption:true,
       progressUpdateEventInterval: 2,
     });
 
@@ -141,7 +148,16 @@ const setupPlayerManager = async () => {
 const App = () => {
   // const token = "hghjg";
   const auth = useSelector(state => state.auth);
-  console.log({auth});
+  const dispatch = useDispatch();
+  const checkAuth = async()=>{
+      try {
+        const token = await AsyncStorage.getItem("@token")
+        dispatch(LoginSuccessfully({ token: token }));
+      } catch (error) {
+        
+      }
+  }
+  // console.log({auth});
   // const [IsPlayerReady, setIsPlayerReady] = useState(false);
   // const addSong = async()=>{
   //   await TrackPlayer.setupPlayer({
@@ -184,6 +200,7 @@ const App = () => {
   useEffect(() => {
     SplashScreen.hide();
     initialize();
+    checkAuth()
   }, []);
 
   useEffect(() => {
@@ -234,6 +251,7 @@ const App = () => {
     <View style={styles.wrapper}>
       
       {auth.token ? <BottomTabNavigation /> : <AuthNavigation />}
+      <FlashMessage position={"top"} />
     </View>
   );
 };

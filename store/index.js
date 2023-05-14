@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import {persistReducer, persistStore} from 'redux-persist';
 import auth from './auth';
+import category from './category';
 // import booking from './booking';
 // import common from './common';
 // import global from './global';
@@ -21,6 +22,7 @@ import auth from './auth';
 
 const rootReducer = combineReducers({
   auth: auth,
+  category:category
   // common: common,
   // user: user,
   // booking: booking,

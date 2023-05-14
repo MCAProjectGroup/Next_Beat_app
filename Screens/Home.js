@@ -1,11 +1,22 @@
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import FloatingMusicPlayer from '../components/FloatingMusicPlayer/FloatingMusicPlayer';
 import BelowButton from '../components/BelowButton/BelowButton';
 import Rechentplaylist from '../components/Recentplaylist/Rechentplaylist';
 import Albums from '../components/Albums/Albums';
+import { useDispatch } from 'react-redux';
+import { getProfileData } from '../store/auth';
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const _initialCalls = async()=>{
+    dispatch(getProfileData())
+  }
+
+  useLayoutEffect(() => {
+    _initialCalls()
+  }, [])
+
   return (
     <View style={{flex: 1, paddingHorizontal: 15}}>
       <ScrollView showsVerticalScrollIndicator={false}>

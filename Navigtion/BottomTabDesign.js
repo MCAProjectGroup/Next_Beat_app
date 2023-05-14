@@ -18,8 +18,9 @@ const BottomTabDesign = (props) => {
     useTrackPlayerEvents([Event.PlaybackTrackChanged], async (event) => {
       if(event.state == State.nextTrack) {
         let index = await TrackPlayer.getCurrentTrack();
+        let track = await TrackPlayer.getTrack(index);
         console.log({index});
-        setCurrentTrack(index);
+        setCurrentTrack(track);
       }
     });
 
@@ -66,13 +67,13 @@ const BottomTabDesign = (props) => {
             elevation: 5
 
         }}>
-            <SongPlayPopUp show={showSongPlayPopUp} onClose={()=> setShowSongPlayPopUp(false)} data={trackList[CurrentTrack]}/>
+            <SongPlayPopUp show={showSongPlayPopUp} onClose={()=> setShowSongPlayPopUp(false)} data={CurrentTrack}/>
             <TouchableOpacity onPress={()=>setShowSongPlayPopUp(true)} style={{ height: 50, flexDirection: "row", justifyContent: "space-between" }}>
                 <View style={{ flexDirection: "row" , alignItems:"center" }}>
                     <View style={{ width: 60, height: "100%", backgroundColor: "red" }}>
-                        <Image source={{uri: trackList[CurrentTrack].artwork}} style={{width:60, height:"100%", resizeMode:"stretch"}} />
+                        <Image source={{uri: CurrentTrack.artwork}} style={{width:60, height:"100%", resizeMode:"stretch"}} />
                     </View>
-                    <Text style={{ marginLeft: 10, fontSize: 16, color:"#fff" }}>{CurrentTrack>=0 && trackList[CurrentTrack].title}</Text>
+                    <Text style={{ marginLeft: 10, fontSize: 16, color:"#fff" }}>{CurrentTrack.title}</Text>
 
                 </View>
                 <TouchableOpacity onPress={handlePlayPress} style={{justifyContent:"center", marginRight:16}}>

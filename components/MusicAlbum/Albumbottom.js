@@ -1,21 +1,44 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import React from 'react';
+import TrackPlayer from 'react-native-track-player';
 
-const Albumbottom = () => {
+
+const Albumbottom = (props) => {
+  const item = props.item;
+  const TrackPlayerAddAndPlay = async(data) => {
+    try {
+      
+      await TrackPlayer.removeUpcomingTracks();
+      await TrackPlayer.add(data)
+      await TrackPlayer.skipToNext();
+      await TrackPlayer.play()
+      
+    } catch (error) {
+      console.log({error})
+    }
+  }
+  
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={()=> TrackPlayerAddAndPlay(  {
+      id: 'trackId',
+      url: item.live_song,
+      title: item.title,
+      artist: item.artists_details.map(item => item.name).join(", "),
+      artwork: item.live_image,
+      // duration: item.duration,
+    },)}  style={styles.container}>
       <View style={styles.left_container}>
         <View style={styles.imagecontainer}>
           <Image
             source={{
-              uri: 'https://cdns-images.dzcdn.net/images/cover/8139fc6191e8f102e693c83f35093b59/500x500.jpg',
+              uri: item.live_image,
             }}
             style={styles.imageCover}
           />
         </View>
         <View style={styles.artist_details}>
-          <Text style={styles.title}>Choudhary</Text>
+          <Text style={styles.title}>{item.title}</Text>
           <View style={styles.artist_title}>
             <Text style={styles.artistsubtitle}>LYRICS</Text>
             <Text style={styles.subtitle}> Mame Khan</Text>
@@ -27,7 +50,7 @@ const Albumbottom = () => {
           <Feather name="more-vertical" size={20} color="grey" />
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

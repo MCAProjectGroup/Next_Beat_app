@@ -1,11 +1,43 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useLayoutEffect, useState } from 'react'
+import { request } from '../../utils/request'
+import { SCREEN_HEIGHT } from '../../utils'
 
 const Rechentplaylist = () => {
+  const [ArtistsList, setArtistsList] = useState([])
+  const getSomeArtists = async () => {
+    try {
+      const res = await request("get", "user/artists");
+      console.log({res:res.data});
+      setArtistsList(res.data.data)
+    } catch (error) {
+
+    }
+  }
+
+  useLayoutEffect(() => {
+    
+    getSomeArtists()
+  }, [])
+
   return (
-    <View style={{marginTop:15,flex:1,}}>
-      <View style={styles.wrapper}>
-        <TouchableOpacity style={styles.playlistdesc}>
+    <View style={{ marginTop: 15, flex: 1, }}>
+      <FlatList
+        data={ArtistsList}
+        keyExtractor={(item) => item._id}
+        numColumns={2}
+        ItemSeparatorComponent={()=> <View style={{height:SCREEN_HEIGHT*0.01}} />}
+        renderItem={({ item, index }) => (
+          <TouchableOpacity style={styles.playlistdesc}>
+          <Image
+            source={{ uri: item.live_image }}
+            style={styles.playlistImage}
+          />
+          <Text style={styles.title}>{item.name}</Text>
+        </TouchableOpacity>
+        )}
+      />
+      {/* <TouchableOpacity style={styles.playlistdesc}>
         <Image
         source={{uri:"https://i.scdn.co/image/ab6761610000e5ebeba97bff36c4ae81e94333d8"}}
         style={styles.playlistImage}
@@ -52,8 +84,8 @@ const Rechentplaylist = () => {
         style={styles.playlistImage}
         />
         <Text style={styles.title} >Kumar Sanu</Text>
-        </TouchableOpacity>
-      </View>
+        </TouchableOpacity> */}
+      {/* </View> */}
     </View>
   )
 }
@@ -61,27 +93,28 @@ const Rechentplaylist = () => {
 export default Rechentplaylist
 
 const styles = StyleSheet.create({
-    wrapper:{
-        flexDirection:'row',
-        marginHorizontal:5,
-        marginVertical:5
-    },
-    playlistImage:{
-        height:60,
-        width:60,
-        borderTopLeftRadius:5,
-        borderBottomLeftRadius:5
-    },
-    title:{
-        color:"#fff",
-        marginLeft:8
-    },
-    playlistdesc:{
-        flexDirection:'row',
-        marginRight:8,
-        borderRadius:5,
-        backgroundColor:"#333",
-        alignItems:'center',
-        width:"50%",     
-    }
+  wrapper: {
+    // flexDirection: 'row',
+    width:"50%",
+    marginHorizontal: 5,
+    marginVertical: 5
+  },
+  playlistImage: {
+    height: 60,
+    width: 60,
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5
+  },
+  title: {
+    color: "#fff",
+    marginLeft: 8
+  },
+  playlistdesc: {
+    flexDirection: 'row',
+    marginRight: 8,
+    borderRadius: 5,
+    backgroundColor: "#333",
+    alignItems: 'center',
+    width: "50%",
+  }
 })
