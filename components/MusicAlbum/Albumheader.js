@@ -3,23 +3,26 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MI from 'react-native-vector-icons/MaterialCommunityIcons';
 import React from 'react';
+import { useRoute } from '@react-navigation/native';
 
 const Albumheader = () => {
+  const params = useRoute().params;
+  console.log({params});
   return (
     <View style={styles.container}>
       {/* search input */}
       <View style={styles.searchbar}>
-        <View style={styles.left_searchbar}>
+        {/* <View style={styles.left_searchbar}>
           <Feather name="search" size={20} color="#fff" />
           <TextInput
             style={styles.searchInputText}
             placeholder={'Search here ...'}
             placeholderTextColor="grey"
           />
-        </View>
-        <View style={styles.right_searchbar}>
-          <Text style={{color: '#fff', fontSize: 14, fontWeight:"700"}}>Sort</Text>
-        </View>
+        </View> */}
+        {/* <View style={styles.right_searchbar}>
+          {/* <Text style={{color: '#fff', fontSize: 14, fontWeight:"700"}}>Sort</Text> */}
+        {/* </View> */} 
       </View>
 
       {/* image container */}
@@ -27,18 +30,18 @@ const Albumheader = () => {
       <View style={styles.imagecontainer}>
         <Image
           source={{
-            uri: 'https://filmfare.wwmindia.com/content/2021/jun/new-bollywood-songs-humraah-91623939760.jpg',
+            uri: params.item.live_image,
           }}
           style={styles.imageCover}
         />
-        <View style={styles.textcontainer}>
+        {/* <View style={styles.textcontainer}>
           <Text style={styles.title}>
             Rahat Fateh Ali Khan, Shreya Ghosal, Kavita seth{' '}
           </Text>
           <Text style={styles.subtitle}>and more</Text>
-        </View>
+        </View> */}
       </View>
-      <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center'}}>
+      {/* <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center'}}>
         <FontAwesome name="spotify" size={24} color="#1dd761" />
 
         <Text style={{color: 'grey', marginLeft: 7}}>
@@ -48,8 +51,8 @@ const Albumheader = () => {
             Anku
           </Text>
         </Text>
-      </View>
-      <Text style={{color: 'grey', marginTop: 15}}> 3h 50min</Text>
+      </View> */}
+      {/* <Text style={{color: 'grey', marginTop: 15}}> 3h 50min</Text> */}
 
       {/* bottom icons */}
       
@@ -59,22 +62,22 @@ const Albumheader = () => {
         
         <View style={styles.left_iconcontainer}>
            
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
           <Feather name="heart" size={20} color="#fff" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity>
-          <Feather
+          {/* <Feather
             name="more-vertical"
             size={20}
             color="grey"
             style={{marginLeft: 20}}
-          />
+          /> */}
           </TouchableOpacity>
-        </View>
+        {/* </View>
         <View style={styles.right_iconcontainer}>
         <TouchableOpacity>
           <MI name="pause-circle" size={50} color="#1dd761" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     </View>
@@ -87,10 +90,10 @@ export default Albumheader;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
-    marginHorizontal: 10,
-    paddingBottom:15
-  },
+    // paddingTop:2,
+    // marginHorizontal: 10,
+    paddingBottom:35
+    },
   searchbar: {
     width: '100%',
     height: 45,
@@ -132,11 +135,11 @@ const styles = StyleSheet.create({
   imagecontainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 60,
+    paddingTop: 10,
   },
   imageCover: {
-    height: 270,
-    width: 270,
+    height: 290,
+    width: 300,
     borderRadius: 5,
     marginRight: 7,
   },

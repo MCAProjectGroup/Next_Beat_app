@@ -2,14 +2,15 @@ import { StyleSheet, Text, View,Image,TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 
-const LibraryCard = ({title}) => {
+const LibraryCard = (props) => {
+    const {title, item} = props;
     const navigation = useNavigation();
   return (
     <View style={{marginTop:15}}>
       <View style={styles.wrapper}>
-        <TouchableOpacity style={styles.playlistdesc} onPress={() => navigation.navigate("Library")} >
+        <TouchableOpacity style={styles.playlistdesc} onPress={() => navigation.navigate("Library", {artist: item})} >
         <Image
-        source={{uri:"https://www.bollywoodhelpline.com/upload/articles/id6341301.jpg"}}
+        source={{uri:item.live_image}}
         style={styles.playlistImage}
         />
         <View style={styles.artiststext}>

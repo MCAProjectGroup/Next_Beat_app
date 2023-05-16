@@ -1,9 +1,29 @@
 import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Albumbottom from '../MusicAlbum/Albumbottom'
 import Feather from 'react-native-vector-icons/Feather';
+import { request } from '../../utils/request';
+import { useEffect } from 'react';
+import { useRoute } from '@react-navigation/native';
+
 
 const Searchlisting = () => {
+  const searchInput = useRoute().params.searchInput
+  const [SongsList, setSongsList] = useState([])
+  const _getSongList = async()=>{
+    try {
+      const res = await request("get", "user/songs?title="+searchInput);
+      console.log(res.data);
+      setSongsList(res.data.data);
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+
+  useEffect(() => {
+    
+    _getSongList()
+  }, [])
   return (
     <View style={styles.container}>
       {/* <Text>Searchlisting</Text> */}
@@ -23,10 +43,10 @@ const Searchlisting = () => {
       <View style={{paddingHorizontal:20}}>
 
       <FlatList 
-        data={[1,2,3,4]}
+        data={SongsList}
         ItemSeparatorComponent={()=> <View  style={{height:5}}/>}
         renderItem={({item})=>(
-            <Albumbottom />
+            <Albumbottom item={item}/>
         )}
         keyExtractor={(item, ) => item+"dfdsfdsf"}
       />

@@ -5,18 +5,18 @@ import Feather from 'react-native-vector-icons/Feather';
 import SearchCard from '../components/SearchCard/SearchCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategoryData } from '../store/category';
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/native';
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState("");
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.category.categories)
+  const categories = useSelector(state => state.category.categories);
   useLayoutEffect(() => {
     dispatch(getCategoryData());  
   
   }, [])
-  // console.log({categories});
+  console.log({categories});
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.textwrapper}>

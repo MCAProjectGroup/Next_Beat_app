@@ -12,14 +12,14 @@ const BottomTabDesign = (props) => {
     const { navigation } = props;
     const [IsPlaying, setIsPlaying] = useState(false);
     const [showSongPlayPopUp, setShowSongPlayPopUp] = useState(false)
-    const [CurrentTrack, setCurrentTrack] = useState(0);
+    const [CurrentTrack, setCurrentTrack] = useState(null);
   
 
     useTrackPlayerEvents([Event.PlaybackTrackChanged], async (event) => {
       if(event.state == State.nextTrack) {
         let index = await TrackPlayer.getCurrentTrack();
         let track = await TrackPlayer.getTrack(index);
-        console.log({index});
+        // console.log({index});
         setCurrentTrack(track);
       }
     });
@@ -64,11 +64,10 @@ const BottomTabDesign = (props) => {
             paddingTop: 10,
             backgroundColor: "#171926",
             borderTopWidth: 0,
-            elevation: 5
-
+            elevation: 5,
         }}>
             <SongPlayPopUp show={showSongPlayPopUp} onClose={()=> setShowSongPlayPopUp(false)} data={CurrentTrack}/>
-            <TouchableOpacity onPress={()=>setShowSongPlayPopUp(true)} style={{ height: 50, flexDirection: "row", justifyContent: "space-between" }}>
+         { CurrentTrack && <TouchableOpacity onPress={()=>setShowSongPlayPopUp(true)} style={{ height: 50, flexDirection: "row", justifyContent: "space-between" }}>
                 <View style={{ flexDirection: "row" , alignItems:"center" }}>
                     <View style={{ width: 60, height: "100%", backgroundColor: "red" }}>
                         <Image source={{uri: CurrentTrack.artwork}} style={{width:60, height:"100%", resizeMode:"stretch"}} />
@@ -79,7 +78,7 @@ const BottomTabDesign = (props) => {
                 <TouchableOpacity onPress={handlePlayPress} style={{justifyContent:"center", marginRight:16}}>
                     <MCI name={playerState == State.Playing ? 'pause' : 'play'} size={20} color={"#1dd761"} />
                 </TouchableOpacity>
-            </TouchableOpacity>
+            </TouchableOpacity>}
             <View style={{ width: "100%", height: 1, backgroundColor: "grey", marginVertical: 6 }} />
             <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
                 {

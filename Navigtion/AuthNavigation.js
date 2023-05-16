@@ -9,6 +9,8 @@ import Welcome from '../components/Welcome/Welcome';
 import Signpage from '../components/Signpage/Signpage';
 import Login from '../components/Login/Login';
 import Forgetpassword from '../components/ForgetPassword/Forgetpassword';
+import Resetotp from '../components/ForgetPassword/Resetotp';
+import ResetPassword from '../components/ResetPassword/ResetPassword';
 
 
 function HomeScreen() {
@@ -59,6 +61,20 @@ function AuthNavigation() {
             title: 'Forget Password',
           }}
           component={Forgetpassword}
+        />
+        <Stack.Screen
+          name="ResetOtp"
+          options={{
+            title: 'Verify OTP',
+          }}
+          component={Resetotp}
+        />
+        <Stack.Screen
+          name="ResetPassword"
+          options={{
+            title: 'Reset Password',
+          }}
+          component={ResetPassword}
         />
       </Stack.Navigator>
     </NavigationContainer>

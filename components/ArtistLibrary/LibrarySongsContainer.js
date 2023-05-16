@@ -30,17 +30,17 @@ const ListData = [
     },
   ];
 
-const LibrarySongsContainer = () => {
+const LibrarySongsContainer = ({dataList=[]}) => {
   return (
     <View style={styles.container}>
       <Text style={{color: '#fff', fontSize: 20, fontWeight: '600'}}>
         Popular
       </Text>
       <FlatList
-          keyExtractor={(item, index) => index}
-          data={ListData}
+          keyExtractor={(item, index) => item._id}
+          data={dataList}
           ListHeaderComponent={() => <View />}
-          renderItem={({item}) => <LibrarySongs songno={item.songno} songname={item.songname} followers={item.followers} />}
+          renderItem={({item, index}) => <LibrarySongs {...item} songno={index+1} songname={item.title} followers={item.visits} />}
         />
     </View>
   );

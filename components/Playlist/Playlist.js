@@ -2,13 +2,13 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 
-const Playlist = ({alubmTitle}) => {
+const Playlist = ({alubmTitle, ...rest}) => {
   const navigation = useNavigation();
   return (
     <View >
-      <TouchableOpacity style={styles.wrapper} onPress={() => navigation.navigate("playlist")}>
+      <TouchableOpacity style={styles.wrapper} onPress={() => rest.onPress(rest.item, rest.index)}>
         <Image 
-        source={{uri:"https://movieposters2.com/images/1516929-b.jpg"}}
+        source={{uri:rest.item.live_image}}
         style={styles.playlistImage}
         />
         <Text style={styles.title}>{alubmTitle}</Text>

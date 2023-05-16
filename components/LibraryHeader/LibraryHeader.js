@@ -16,15 +16,15 @@ const LibraryHeader = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.textwrapper}>
         <Image
-          source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3CWx3HdiVZnwYAVNc2aOmf5C7mjcWaytU_A&usqp=CAU'}}
+          source={{uri: 'https://i0.wp.com/www.alphr.com/wp-content/uploads/2021/04/iTunes-How-to-Add-Music-to-Library-scaled.jpg?resize=738%2C320&ssl=1'}}
           style={styles.playlistImage}
         />
         <Text style={styles.title}>Your Library</Text>
-        <View style={styles.libraryicon}>
+        {/* <View style={styles.libraryicon}>
             <TouchableOpacity>
             <Antdesign name="search1" size={24} color="#fff" />
             </TouchableOpacity>
-            </View>
+            </View> */}
             {/* <View style={styles.libraryicon}> */}
             {/* <TouchableOpacity>
              {/* <Antdesign name="plus" size={24} color="#fff" />  */}

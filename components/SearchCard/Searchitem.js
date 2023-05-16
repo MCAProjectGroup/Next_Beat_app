@@ -2,11 +2,12 @@ import { StyleSheet, Text, View,TouchableOpacity,Image, ImageBackground } from '
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-const Searchitem = ({title, bgColor,live_image}) => {
+const Searchitem = (props) => {
+  const {title, bgColor,live_image,_id} =props; 
   const navigation = useNavigation()
   return (
     <View style={styles.wrapper}>
-        <TouchableOpacity style={styles.playlistdesc} onPress={()=> navigation.navigate("playlist")} >
+        <TouchableOpacity style={styles.playlistdesc} onPress={()=> navigation.navigate("playlist",{category:_id})} >
         <ImageBackground style={[styles.container,{backgroundColor:bgColor}]} source={{uri:live_image}} imageStyle={{...styles.container, resizeMode:"cover"}}>
           
           <Text style={styles.title}>{title}</Text>

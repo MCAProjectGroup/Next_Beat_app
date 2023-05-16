@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ArtistLibrary from './ArtistLibrary'
 import LibrarySongs from './LibrarySongs'
 import PopularReleases from './PopularReleases'
@@ -10,17 +10,32 @@ import LibrarySongsContainer from './LibrarySongsContainer'
 import ArtistFansContainer from './ArtistFansContainer'
 import FeaturingContainer from './FeaturingContainer'
 import PopularContainer from './PopularContainer'
+import { useRoute } from '@react-navigation/native'
+import { request } from '../../utils/request'
 
 const LibraryContent = () => {
+  const artist = useRoute().params.artist;
+  const [SongsList, setSongsList] = useState([])
+  const _getSongList = async()=>{
+    try {
+      const res = await request("get", "user/songs?artist="+artist._id);
+      console.log(res.data);
+      setSongsList(res.data.data);
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+
+  useEffect(() => {
+    
+    _getSongList()
+  }, [])
+  
   return (
     <View style={styles.container}>
       <ScrollView>
-      <ArtistLibrary/>
-      <LibrarySongsContainer/>
-      {/* <PopularContainer/> */}
-      {/* <FeaturingContainer/> */}
-      {/* <ArtistDesc/> */}
-      {/* <ArtistFansContainer/> */}
+      <ArtistLibrary artist={artist}/>
+      <LibrarySongsContainer dataList={SongsList}/>
       </ScrollView>
     </View>
   )
