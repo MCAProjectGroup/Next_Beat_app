@@ -14,6 +14,7 @@ import StackNavigation from './StackNavigation';
 import { TabBarOptions } from '../static';
 import BottomTabDesign from './BottomTabDesign';
 import Setting from '../components/Setting/Setting';
+import StackNavigationSetting from './StackNavigationSetting';
 // import Header from '../Header/Header';
 
 
@@ -33,7 +34,7 @@ const BottomTabNavigation = () => {
         
         },
         tabBarInactiveTintColor:"grey",
-        tabBarActiveTintColor:"#fff"
+        tabBarActiveTintColor:"#fff",
       }}
       tabBar={(props)=>(
        <BottomTabDesign {...props} />
@@ -70,8 +71,10 @@ const BottomTabNavigation = () => {
         )
       }} 
       />
-      <Tab.Screen name="Setting" component={Setting}
+      <Tab.Screen name="Setting" component={StackNavigationSetting}
        options={{ headerShown:false,
+        unmountOnBlur:true,
+
         tabBarIcon:({color}) =>( 
             <MCI name="spotify" size={25} color={color} />
         )

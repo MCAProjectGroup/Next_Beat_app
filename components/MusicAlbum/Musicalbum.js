@@ -44,7 +44,7 @@ const Musicalbum = () => {
     <ScrollView>
       <View style={styles.container}>
         <Albumheader />
-        {console.log({SongsList})}
+        {/* {console.log({SongsList})} */}
         <FlatList
           data={SongsList}
           keyExtractor={(item, index)=> item._id}

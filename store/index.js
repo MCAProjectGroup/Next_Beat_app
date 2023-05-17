@@ -7,34 +7,13 @@ import {
 import {persistReducer, persistStore} from 'redux-persist';
 import auth from './auth';
 import category from './category';
-// import booking from './booking';
-// import common from './common';
-// import global from './global';
-// import user from './user';
-// import temp_booking from './temp/booking';
-// import foodie from './foodie';
-// import home from './home';
-// import filter from './filter';
-// import cart from './cart';
-// import notification from './notification';
-// import addressList from './addressList';
-// import foodieBooking from './foodieBooking';
+import song from './song';
 
 const rootReducer = combineReducers({
   auth: auth,
-  category:category
-  // common: common,
-  // user: user,
-  // booking: booking,
-  // global: global,
-  // temp_booking: temp_booking,
-  // foodie: foodie,
-  // home: home,
-  // filter: filter,
-  // cart: cart,
-  // notification: notification,
-  // addressList: addressList,
-  // foodieBooking: foodieBooking,
+  category:category,
+  song
+  
 });
 
 const persistConfig = {

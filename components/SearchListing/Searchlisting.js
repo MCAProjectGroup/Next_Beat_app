@@ -10,9 +10,10 @@ import { useRoute } from '@react-navigation/native';
 const Searchlisting = () => {
   const searchInput = useRoute().params.searchInput
   const [SongsList, setSongsList] = useState([])
-  const _getSongList = async()=>{
+  const [searchSong, setSearchSong] = useState(searchInput)
+  const _getSongList = async(text=searchInput)=>{
     try {
-      const res = await request("get", "user/songs?title="+searchInput);
+      const res = await request("get", "user/songs?title="+text);
       console.log(res.data);
       setSongsList(res.data.data);
     } catch (error) {
@@ -35,9 +36,9 @@ const Searchlisting = () => {
         <TextInput
           placeholder="What do you want to listen to?"
           style={styles.input}
-        //   value={searchInput}
-        //   onChangeText={setSearchInput}
-        //   onSubmitEditing={()=>navigation.navigate("Searchlisting",{searchInput})}
+          value={searchSong}
+          onChangeText={setSearchSong}
+          onSubmitEditing={()=>_getSongList(searchSong)}
         />
       </View>
       <View style={{paddingHorizontal:20}}>

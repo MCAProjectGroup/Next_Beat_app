@@ -29,7 +29,7 @@ export const TabBarOptions = [
 
 export const SongManagerOptions =  [
     {
-        icon:'shuffle',
+        icon:'heart',
         onPress:()=>{}
     },
     {
@@ -56,6 +56,10 @@ export const SongManagerOptions =  [
     },
     {
         icon:'repeat',
-        onPress:()=>TrackPlayer.setRepeatMode(RepeatMode.Queue)
+        onPress:(data)=>{
+            // const Mode = [RepeatMode.Queue, RepeatMode.Track]
+            console.log("Mode")
+            TrackPlayer.setRepeatMode(data?RepeatMode.Queue: RepeatMode.Track)
+        }
     }
 ]

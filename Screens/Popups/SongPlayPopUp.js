@@ -6,6 +6,10 @@ import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
 import Slider from '@react-native-community/slider';
 import { SongManagerOptions } from '../../static'
 import TrackPlayer, { State, usePlaybackState,useProgress } from 'react-native-track-player'
+import { useDispatch, useSelector } from 'react-redux'
+import { setRepeat } from '../../store/song'
+
+const mode = ["", "-once", "-off"]
 
 function pad(n, width, z = 0) {
     n = n + '';
@@ -33,17 +37,8 @@ const minutesAndSeconds = (position) => ([
 const SongPlayPopUp = (props) => {
     const playerState = usePlaybackState();
     const progress = useProgress();
-    async function handlePlayPress() {
-      if(await TrackPlayer.getState() == State.Playing) {
-        setIsPlaying(false)
-        TrackPlayer.pause();
-      }
-      else {
-        TrackPlayer.play();
-        setIsPlaying(true)
-
-      }
-    }
+    const repeat = useSelector(state=> state.song.repeat)
+   const dispatch = useDispatch()
     // console.log({progress});
 
     return (
@@ -72,7 +67,7 @@ const SongPlayPopUp = (props) => {
 
                         </View>
                         <View style={{ width: 35 }}>
-                            <Feather name="heart" size={24} color="#fff" />
+                            {/* <Feather name="heart" size={24} color="#fff" /> */}
                         </View>
                     </View>
                     <View style={{marginTop:28}}>
@@ -100,15 +95,18 @@ const SongPlayPopUp = (props) => {
                             <Text style={{color:"#fff"}}>{secondsToHHMMSS(progress.position)}</Text>
                             <Text style={{color:"#fff"}}>{secondsToHHMMSS(progress.duration)}</Text>
                         </View>
-
+                        {console.log({repeat})}
                         <View style={styles.songManageMenu}>
                             {
                                SongManagerOptions.map((item, index)=>(
                                     <TouchableOpacity onPress={()=>{
-                                        console.log(item)
-                                        item.onPress()
+                                        // console.log(item)
+                                        item.onPress(repeat);
+                                        if(item.icon.startsWith("repeat")){
+                                            dispatch(setRepeat())
+                                        }
                                         }}>
-                                        <MCI name={index===2?playerState == State.Playing ? 'pause' : 'play':item.icon} size={32+(index===2?16:0)}  color="#fff"/>
+                                        <MCI name={index===2?playerState == State.Playing ? 'pause' : 'play': index===4?item.icon+mode[repeat]: item.icon} size={32+(index===2?16:0)}  color="#fff"/>
                                     </TouchableOpacity>
                                 ))
                             }

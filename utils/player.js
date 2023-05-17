@@ -1,4 +1,5 @@
 import TrackPlayer, { AppKilledPlaybackBehavior, Capability } from "react-native-track-player";
+import { request } from "./request";
 
 export const setupPlayerManager = async () => {
   let isSetup = false;
@@ -58,7 +59,7 @@ export const TrackPlayerAddAndPlay = async(data) => {
     await TrackPlayer.add(data)
     await TrackPlayer.skipToNext();
     await TrackPlayer.play()
-    
+    await  request("get", "user/songs/"+data.id)
   } catch (error) {
     console.log({error})
   }

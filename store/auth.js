@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { request } from "../utils/request";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import TrackPlayer from "react-native-track-player";
 
 
 export const getProfileData = createAsyncThunk(
@@ -40,7 +41,7 @@ const slice = createSlice({
             state.token = "";
             state.user = {};
             AsyncStorage.removeItem("@token");
-
+            TrackPlayer.reset();
         },
     },
     extraReducers:{

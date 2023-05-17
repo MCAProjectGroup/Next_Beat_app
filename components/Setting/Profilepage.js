@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfileData } from '../../store/auth';
+import { showFlashMessage } from '../../utils';
+import { request } from '../../utils/request';
 
 const Profilepage = () => {
 
@@ -16,9 +19,23 @@ const Profilepage = () => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [avatar, setAvatar] = useState(profile.avatar);
-
-  const handleSubmit = () => {
-
+  const dispatch = useDispatch();
+  const handleSubmit = async() => {
+    if(name.trim() === "")
+    return showFlashMessage("Please enter a name","", "danger");
+    if(mobile.trim().length !== 10)
+    return showFlashMessage("Please enter a 10 digit Number","", "danger");
+    try {
+      const res = await request("put", "user/main/profile", {
+        name,
+        phone:mobile
+      });
+      console.log(res.data);
+      showFlashMessage(res.data.message,"", "success");
+      dispatchEvent(getProfileData())
+    } catch (error) {
+      
+    }
   }
 
   return (
@@ -51,7 +68,8 @@ const Profilepage = () => {
             />
             <Text style={styles.label}>Email Address</Text>
             <TextInput
-              style={styles.input}
+              style={[styles.input,{color:"#333"}]}
+              editable={false}
               placeholder="Enter Email Address"
               value={email}
               onChangeText={setEmail}
