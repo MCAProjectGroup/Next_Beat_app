@@ -7,7 +7,7 @@ const Searchitem = (props) => {
   const navigation = useNavigation()
   return (
     <View style={styles.wrapper}>
-        <TouchableOpacity style={styles.playlistdesc} onPress={()=> navigation.navigate("playlist",{category:_id})} >
+        <TouchableOpacity style={styles.playlistdesc} onPress={()=> navigation.navigate("playlist",{category:_id, item:props})} >
         <ImageBackground style={[styles.container,{backgroundColor:bgColor}]} source={{uri:live_image}} imageStyle={{...styles.container, resizeMode:"cover"}}>
           
           <Text style={styles.title}>{title}</Text>
