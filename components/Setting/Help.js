@@ -34,10 +34,46 @@ import Icon1 from 'react-native-vector-icons/Entypo';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import Icon3 from 'react-native-vector-icons/Foundation';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import * as yup from "yup";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
+import { showFlashMessage, showYupFormValidationError } from '../../utils';
+import { request } from '../../utils/request';
 
+const schema = yup.object({
+    name: yup.string().required("Name is Required"),
+    email: yup.string().required("Email is Required"),
+    message: yup.string().required("Message is Required"),
+    extra: yup.string()
+});
 
 
 const Form = () => {
+    const { setValue, handleSubmit, formState: { errors }, reset } = useForm({
+        resolver :yupResolver(schema)
+    })
+     
+    
+      const _stateManager = (key, value = "") => {
+        setValue(key, value);
+      }
+      useEffect(() => {
+        // console.log({errors});
+        showYupFormValidationError(errors)
+    
+      }, [errors])
+    
+    const onSubmit = async(data)=>{
+        try {
+            res = await request("post","user/main/contact", data)
+            showFlashMessage(res.data.message, "", "success")
+        } catch (error) {
+            console.log(error);
+            showFlashMessage(error.response.data.message, "", "danger")
+            
+        }
+    }
     return (
         <>
         <ScrollView>
@@ -45,22 +81,22 @@ const Form = () => {
                 <View style={[styles.wrapper, styles.marginBottom]}>
                     <View style={styles.namediv}>
                         <View style={styles.wrapper}>
-                            <Text style={styles.text}>First Name</Text>
+                            <Text style={styles.text}>Name</Text>
                             {/* <Icon name='star-of-life' style={styles.small_icon}></Icon> */}
                         </View>
                         <View style={styles.searchinput}>
-                            <TextInput  style={styles.input} />
+                            <TextInput placeholderTextColor={"grey"} onChangeText={(e)=> _stateManager("name",e)} placeholder="Name"  style={styles.input} />
                         </View>
                     </View>
-                    <View style={styles.namediv}>
+                    {/* <View style={styles.namediv}>
                         <View style={styles.wrapper}>
                             <Text style={styles.text}>Last Name</Text>
-                            {/* <Icon name='star-of-life' style={styles.small_icon}></Icon> */}
+                          
                         </View>
                         <View style={styles.searchinput}>
-                            <TextInput style={styles.input} />
+                            <TextInput placeholderTextColor={"grey"} style={styles.input} />
                         </View>
-                    </View>
+                    </View> */}
                 </View>
                 <View style={styles.marginBottom}>
                     <View style={styles.wrapper}>
@@ -68,7 +104,7 @@ const Form = () => {
                         {/* <Icon name='star-of-life' style={styles.small_icon}></Icon> */}
                     </View>
                     <View style={styles.searchinput}>
-                        <TextInput  style={styles.input} />
+                        <TextInput placeholderTextColor={"grey"}  onChangeText={(e)=> _stateManager("email", e)} placeholder="Email"  style={styles.input} />
                     </View>
                 </View>
                 <View style={styles.marginBottom}>
@@ -77,13 +113,13 @@ const Form = () => {
                         {/* <Icon name='star-of-life' style={styles.small_icon}></Icon> */}
                     </View>
                     <View style={styles.searchinput}>
-                        <TextInput placeholder="" style={styles.input} />
+                        <TextInput placeholderTextColor={"grey"}  onChangeText={(e)=> _stateManager("message",e)} placeholder="Message" style={styles.input} />
                     </View>
                 </View>
                 <View style={styles.marginBottom}>
                     <Text style={styles.text}>Aditional Details</Text>
                     <View style={styles.textarea}>
-                        <TextInput style={styles.input} multiline={true} />
+                        <TextInput placeholderTextColor={"grey"} style={styles.input} placeholder="Aditional Optional" onChangeText={(e)=> _stateManager("extra",e)} multiline={true} />
                     </View>
                 </View>
                 <View style={styles.marginBottom}>
@@ -95,7 +131,7 @@ const Form = () => {
                                 Alert.alert("Button is Pressed!!!");
                             }}
                         /> */}
-                        <TouchableOpacity style={styles.loginBtn}>
+                        <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit(onSubmit)}>
                     <Text style={{fontWeight: 'bold',fontSize:18,color:"black"}}> Send Message </Text>
                       </TouchableOpacity>
                     {/* </TouchableOpacity> */}
@@ -164,14 +200,14 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingLeft: 5,
         fontSize: 20,
-        color: '#000',
+        color: '#fff',
         fontWeight: '700',
         // opacity: 1,
         // borderWidth:1,
         borderColor:"grey",
     },
     namediv: {
-        width: '50%',
+        width: '100%',
         paddingRight: 15,
         // paddingTop: 2
 
